@@ -1,27 +1,31 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="181px" height="101px" viewBox="-0.5 -0.5 181 101" content="&lt;mxfile&gt;&lt;diagram id=&quot;UDusEh0Nm5hcY7_01m2s&quot; name=&quot;Page-1&quot;&gt;jZNLU8MgEIB/TY7O5GFjPfZlvXjqwTOWbcIIbCS0Tfz1LgGaxtoZL8ny7QP2lRQr1W0Na+o35CCTPOVdUqyTPJ89zunrQO/BvMw8qIzgHl2BnfiGANNAj4JDOzG0iNKKZgr3qDXs7YQxY/A8NTugnN7asApuwG7P5C19F9zWIYv8aeSvIKo63pyVz16jWDQOmbQ143i+QsUmKVYG0XpJdSuQrnaxLt7v5Y728jAD2v7HIfcOJyaPIbckLyW5Lg9IEeiBtg9Zl19HjIqHdujJggyyeUNtXY56kir33yKTbYz2YSJ+IJ83pjmzaPq/1e9seOMepRStQH0nirtdCS0Ua9xD+9aCipaUsU/Am4diX3LJLXSO11ZJAhmJTIpKkyzh4DQnMFZQxxcBK8G5c14aoNzZxxAopXODQtthnmbLZLZ2kY4WfX2GwK01+AkrlGiIaNQuykFI+QuFTtC90N3tZnaZEdotQAXWFTENDnGq+um6nMcZzeaB1dfzmQbIwl5Ul8jj6JAQpicexykddFerXmx+AA==&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="141px" height="91px" viewBox="-0.5 -0.5 141 91" content="&lt;mxfile&gt;&lt;diagram id=&quot;UDusEh0Nm5hcY7_01m2s&quot; name=&quot;Page-1&quot;&gt;jZRNU8IwEIZ/TY/O0FYqHOVDvHDy4DmQpc2YZGsSpPjrTZqtNAIzXiB9dvfdj26alUvVbQxrmy1ykFkx4V1WrrKiqGaF/w3gHMGsyiOojeARjcCb+AaCE6JHwcEmjg5ROtGmcI9aw94ljBmDp9TtgDLN2rIarsDbnslr+i64a6iL4unCX0HUzZA5r+bRotjgTJ3YhnE8jVC5zsqlQXTxpLolyDC7YS4x7uWO9bcwA9r9J4BexBeTR+otKyrpQxcH9Aq+QHemrqvPY6hqkZxq+u9DbMv0zZCg9WD71/jsHfJZ290U2iCTdlDzRUfBNMnduv4mebyTZBDamYE8ePct05w5NOfb5nfWj22PUgorUNvbbiGxEloo1oYaz9aBGvUTa0/LuMJF0l3hoAu8cUp6kPsjk6LW/izhECxfYJzwu/lMWAnOQ/DCgJ8G2/VCE//cotCu3/zpIpuugtLRYZxYL2ydwQ9YokTjiUYdVA5Cyj/oeslo70Ip0I0QLd0GUIELs52Qddh/+gDk0/h4utym/JFcmtFNmhNjdIHrX+HLjvsDrfnweLlOvW30TSrXPw==&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs/>
     <g>
-        <rect x="0" y="0" width="180" height="100" fill="none" stroke="none" pointer-events="all"/>
+        <rect x="0" y="0" width="140" height="90" fill="none" stroke="none" pointer-events="all"/>
         <g transform="translate(-0.5 -0.5)">
             <switch>
                 <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
-                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 50px; margin-left: 2px;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 45px; margin-left: 2px;">
                         <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: nowrap;">
-                                <font style="font-size: 18px;">
-                                    Goals
-                                    <br/>
-                                    - Mandatory
-                                    <br/>
-                                    - Wall collisions
-                                    <br/>
-                                    - A minimap system
+                                <font style="">
+                                    <span style="font-size: 18px;">
+                                        Goals
+                                    </span>
+                                    <font style="font-size: 14px;">
+                                        <br/>
+                                        - Mandatory
+                                        <br/>
+                                        - Wall collisions
+                                        <br/>
+                                        - A minimap system
+                                    </font>
                                 </font>
                             </div>
                         </div>
                     </div>
                 </foreignObject>
-                <text x="2" y="54" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                <text x="2" y="49" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
                     Goals...
                 </text>
             </switch>
