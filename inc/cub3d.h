@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/18 18:19:45 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:31:25 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # include <math.h>
 # include <stdbool.h>
 # include "../../libsft/libsft/includes/libsft.h"
+# include "../../libsft/libsft/includes/libsft_utils.h"
+# include "../../ft_gnl/ft_gnl.h"
+# include "error3d.h"
 
 /*-------difine------*/
 # define SPACE '0'
@@ -33,6 +36,26 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # define SCREEN_HEIGHT 720
 
 /*------typedef------*/
+typedef struct s_map
+{
+	char		type;
+	t_point2d	point2d;
+}	t_map;
+
+typedef struct s_meta
+{
+	char		*north_tex;
+	char		*south_tex;
+	char		*west_tex;
+	char		*east_tex;
+	int			floor_color;
+	int			ceiling_color;
+	size_t		width_map;
+	size_t		height_map;
+	t_map		**map;
+	t_mlx		mlx;
+}	t_meta;
+
 typedef struct s_mlx
 {
 	void	*mlx;

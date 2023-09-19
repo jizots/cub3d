@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 17:28:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/19 19:02:04 by sotanaka         ###   ########.fr       */
+/*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
+/*   Updated: 2023/09/19 15:08:01 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "cub3d.h"
 
-/*------include-------*/
-/*
-open, close, read
-*/
-# include <fcntl.h>
-# include <unistd.h>
-# include "cub3d.h"
+static void	init_meta(t_meta *meta)
+{
+	meta->north_tex = NULL;
+	meta->south_tex = NULL;
+	meta->west_tex = NULL;
+	meta->east_tex = NULL;
+	meta->floor_color = -1;
+	meta->ceiling_color = -1;
+	meta->map = NULL;
+}
 
-/*-------difine------*/
-# define FAIL_ELEM -6
-# define SUCCESS_ELEM 1
+int	main(int ac, char *av[])
+{
+	t_meta	meta;
 
-/*------typedef------*/
+	if (ac != 2)
+		return (printf("Error. Invalid argument\n"));
+	init_meta(&meta);
+	if (cub3d_parse(av[1], &meta) != 0)
+		return (1);
 
-/*------prototype------*/
-int	parse_line_element(char *str, t_meta *meta, size_t line_num, int flag);
-
-#endif
+}
