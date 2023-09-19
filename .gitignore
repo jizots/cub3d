@@ -1,3 +1,6 @@
 a.out
 .vscode/
 *.o
+.DS_store
+.gitignore.swp
+
