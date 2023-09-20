@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/19 18:31:25 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:16:52 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ typedef struct s_map
 	t_point2d	point2d;
 }	t_map;
 
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_mlx;
+
 typedef struct s_meta
 {
 	char		*north_tex;
@@ -55,17 +66,6 @@ typedef struct s_meta
 	t_map		**map;
 	t_mlx		mlx;
 }	t_meta;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_mlx;
 
 /*------prototype------*/
 int		cub3d_parse(char *file_name, t_meta *meta);

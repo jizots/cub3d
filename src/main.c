@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/19 15:08:01 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:12:25 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ static void	init_meta(t_meta *meta)
 	meta->map = NULL;
 }
 
-int	main(int ac, char *av[])
-{
-	t_meta	meta;
+// int	main(int ac, char *av[])
+// {
+// 	t_meta	meta;
 
-	if (ac != 2)
-		return (printf("Error. Invalid argument\n"));
-	init_meta(&meta);
-	if (cub3d_parse(av[1], &meta) != 0)
-		return (1);
+// 	if (ac != 2)
+// 		return (printf("Error. Invalid argument\n"));
+// 	init_meta(&meta);
+// 	if (cub3d_parse(av[1], &meta) != 0)
+// 		return (1);
 
-}
+// }

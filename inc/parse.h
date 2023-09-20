@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 17:28:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/19 19:02:04 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/20 12:08:11 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ open, close, read
 # include "cub3d.h"
 
 /*-------difine------*/
-# define FAIL_ELEM -6
-# define SUCCESS_ELEM 1
+# define IGNORE_LINE 0
 
 /*------typedef------*/
 
