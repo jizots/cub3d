@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/20 13:16:52 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:04:45 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_meta
 	int			ceiling_color;
 	size_t		width_map;
 	size_t		height_map;
-	t_map		**map;
+	char		**map;
 	t_mlx		mlx;
 }	t_meta;
 

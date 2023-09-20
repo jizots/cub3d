@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 17:28:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/20 12:08:11 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:36:45 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ open, close, read
 /*------typedef------*/
 
 /*------prototype------*/
-int	parse_line_element(char *str, t_meta *meta, size_t line_num, int flag);
+int		parse_line_element(char *str, t_meta *meta, size_t line_num, int flag);
+int		verify_map(char **map);
 
 #endif

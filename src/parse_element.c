@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/20 14:38:29 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:10:30 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	copy_path_of_texture(char **split, t_meta *meta)
 	return (0);
 }
 
-static int get_rgb(int *rgb, char **split, int flag)
+static int	get_rgb(int *rgb, char **split, int flag)
 {
 	char	**rgb_char;
 	int		i;
@@ -65,7 +65,7 @@ static int	parse_color(char **split, t_meta *meta, int flag)
 	if (count_row_of_matrix(split) != 2)
 		return (FAIL_ELEM);
 	status = get_rgb(rgb, split, flag);
-	if(status != 0)
+	if (status != 0)
 		return (status);
 	if (ft_memcmp(split[0], "F", 2) == 0)
 		meta->floor_color = create_trgb_color(0, rgb[0], rgb[1], rgb[2]);
@@ -85,7 +85,7 @@ int	parse_line_element(char *str, t_meta *meta, size_t line_num, int flag)
 		return (IGNORE_LINE);
 	split = split_multichar(str, WHITE_SPACE);
 	if (split == NULL)
-		return (perror_wrap("split", FAIL_ELEM));
+		return (perror_wrap("split: ", FAIL_ELEM));
 	status = 0;
 	if (flag < 4)
 		status = copy_path_of_texture(split, meta);
