@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/21 11:27:02 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:58:24 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ typedef struct s_meta
 	char		*east_tex;
 	int			floor_color;
 	int			ceiling_color;
+	char		**map;
+	t_map		human;
 	size_t		width_map;
 	size_t		height_map;
-	char		**map;
 	t_mlx		mlx;
 }	t_meta;
 

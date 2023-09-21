@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/21 11:50:49 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/21 19:08:53 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char *av[])
 		return (printf("Error. Invalid argument\n"));
 	init_meta(&meta);
 	if (cub3d_parse(av[1], &meta) != 0)
-// 		return (1);
+		return (1);
 
 	printf("north: %s\n", meta.north_tex);
 	printf("south: %s\n", meta.south_tex);
@@ -42,7 +42,8 @@ int	main(int ac, char *av[])
 
 	for (int i = 0; meta.map != NULL && meta.map[i] != NULL; i++)
 		printf("%s", meta.map[i]);
-
+	printf("Human:x_%f y_%f\n", meta.human.point2d.x, meta.human.point2d.y);
+	free_meta(&meta);
 	return (0);
 }
 
