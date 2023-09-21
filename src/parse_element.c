@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/20 15:10:30 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:22:21 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	get_rgb(int *rgb, char **split, int flag)
 		}
 		i++;
 	}
-	free_map_null_terminated((void **)rgb_char);
+	free_map_null_terminated((void ***)&rgb_char);
 	return (status);
 }
 
@@ -91,7 +91,7 @@ int	parse_line_element(char *str, t_meta *meta, size_t line_num, int flag)
 		status = copy_path_of_texture(split, meta);
 	else
 		status = parse_color(split, meta, flag);
-	free_map_null_terminated((void **)split);
+	free_map_null_terminated((void ***)&split);
 	if (status == FAIL_ELEM)
 		return (error_msg_file(FAIL_ELEM, line_num));
 	else if (status == UNEXPETC_COLORCODE)

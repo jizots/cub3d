@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/20 15:04:45 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:27:02 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ typedef struct s_meta
 
 /*------prototype------*/
 int		cub3d_parse(char *file_name, t_meta *meta);
+void	free_meta(t_meta *meta);
 
 #endif
