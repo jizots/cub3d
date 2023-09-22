@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 14:34:04 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:47:01 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char *av[])
 
 	for (int i = 0; meta.map != NULL && meta.map[i] != NULL; i++)
 		printf("%s", meta.map[i]);
-	printf("Human:x_%f y_%f\n", meta.human.point2d.x, meta.human.point2d.y);
+	printf("Human:x_%f y_%f\n", meta.human.position.x, meta.human.position.y);
 	free_meta(&meta);
 	return (0);
 }

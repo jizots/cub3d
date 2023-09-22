@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:06:52 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 16:35:15 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:48:27 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	set_ret_val(size_t count_person)
 	return (PERSON_ERROR);
 }
 
-static int	verify_appeared_char(char **map, t_map *human)
+static int	verify_appeared_char(char **map, t_human *human)
 {
 	int		i;
 	int		j;
@@ -37,8 +37,8 @@ static int	verify_appeared_char(char **map, t_map *human)
 			if (ft_strchr("NWSE", map[i][j]))
 			{
 				count_person++;
-				human->point2d.x = j;
-				human->point2d.y = i;
+				human->position.x = j;
+				human->position.y = i;
 			}
 			j++;
 		}
@@ -90,7 +90,7 @@ int	verify_map(t_meta *meta)
 	if (status != 0)
 		return (error_msg_file(status, 9999));
 	if (is_map_surrounded_by_wall(meta->map, count_row_of_matrix(meta->map), 
-			(int)meta->human.point2d.x, (int)meta->human.point2d.y) == false)
+			(int)meta->human.position.x, (int)meta->human.position.y) == false)
 		return (error_msg_file(NO_WALL, 9999));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/21 12:58:24 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:59:52 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # include <stdbool.h>
 # include "../../libsft/libsft/includes/libsft.h"
 # include "../../libsft/libsft/includes/libsft_utils.h"
-# include "../../ft_gnl/ft_gnl.h"
+# include "../../libsft/libsft/includes/ft_gnl.h"
 # include "error3d.h"
+# include <mlx.h>
 
 /*-------difine------*/
 # define SPACE '0'
@@ -36,11 +37,11 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # define SCREEN_HEIGHT 720
 
 /*------typedef------*/
-typedef struct s_map
+typedef struct s_human
 {
-	char		type;
-	t_point2d	point2d;
-}	t_map;
+	t_point2d	position;
+	int			vector;
+}	t_human;
 
 typedef struct s_mlx
 {
@@ -62,7 +63,7 @@ typedef struct s_meta
 	int			floor_color;
 	int			ceiling_color;
 	char		**map;
-	t_map		human;
+	t_human		human;
 	size_t		width_map;
 	size_t		height_map;
 	t_mlx		mlx;
