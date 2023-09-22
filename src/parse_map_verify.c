@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:06:52 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 14:33:23 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:54:57 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	verify_appeared_char(char **map, t_map *human)
 	while (map[i])
 	{
 		j = 0;
-		if (is_string_composedof(map[i], "01NSEW \n\t") == false)
+		if (is_string_composedof(map[i], "01NSEW \n") == false)
 			return (UNDEFINED_C);
 		while (map[i][j])
 		{
@@ -47,7 +47,7 @@ static int	verify_appeared_char(char **map, t_map *human)
 	return (set_ret_val(count_person));
 }
 
-static bool	is_fail_map(char **map, size_t rowsize, int x, int y)
+static bool	is_valid_position(char **map, size_t rowsize, int x, int y)
 {
 	if (x <= 0 || y <= 0 || (ft_strlen(map[y - 1])) <= x
 		|| (rowsize - 1) <= y)
@@ -62,26 +62,26 @@ static bool	is_fail_map(char **map, size_t rowsize, int x, int y)
 
 bool	is_map_surrounded_by_wall(char **map, size_t rowsize, int x, int y)
 {
-	if (is_fail_map(map, rowsize, x, y) == false)
+	if (is_valid_position(map, rowsize, x, y) == false)
 		return (false);
-	if (map[y][x] == '0')
+	if (map[y][x] == SPACE)
 		map[y][x] = VISITED;
-	if (0 < y && ft_strlen(map[y - 1]) >= x && map[y - 1][x] == '0')
+	if (0 < y && ft_strlen(map[y - 1]) >= x && map[y - 1][x] == SPACE)
 	{
 		if (is_map_surrounded_by_wall(map, rowsize, x, y - 1) == false)
 			return (false);
 	}
-	if (ft_strlen(map[y]) >= x + 1 && map[y][x + 1] == '0')
+	if (ft_strlen(map[y]) >= x + 1 && map[y][x + 1] == SPACE)
 	{
 		if (is_map_surrounded_by_wall(map, rowsize, x + 1, y) == false)
 			return (false);
 	}
-	if (y < rowsize - 1 && ft_strlen(map[y + 1]) >= x && map[y + 1][x] == '0')
+	if (y < rowsize - 1 && ft_strlen(map[y + 1]) >= x && map[y + 1][x] == SPACE)
 	{
 		if (is_map_surrounded_by_wall(map, rowsize, x, y + 1) == false)
 			return (false);
 	}
-	if (0 < x && map[y][x - 1] == '0')
+	if (0 < x && map[y][x - 1] == SPACE)
 	{
 		if (is_map_surrounded_by_wall(map, rowsize, x - 1, y) == false)
 			return (false);
