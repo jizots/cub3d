@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:12:35 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/20 14:37:58 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:18:09 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@
 # include "cub3d.h"
 
 /*-------difine------*/
-# define MULTI_P 1
-# define NOTHING_P 2
-# define UNDEFINED_C 3
-# define NO_WALL 4
-# define UNEXPETC_COLORCODE 5
+# define PERSON_ERROR 1
+# define UNDEFINED_C 2
+# define NO_WALL 3
+# define UNEXPETC_COLORCODE 4
 # define FAIL_ELEM -6
 # define SUCCESS_ELEM 1
 

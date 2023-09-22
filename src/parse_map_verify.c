@@ -6,20 +6,27 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:06:52 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 14:05:29 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:33:23 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
+static int	set_ret_val(size_t count_person)
+{
+	if (count_person == 1)
+		return (0);
+	return (PERSON_ERROR);
+}
+
 static int	verify_appeared_char(char **map, t_map *human)
 {
 	int		i;
 	int		j;
-	size_t	count_parson;
+	size_t	count_person;
 
 	i = 0;
-	count_parson = 0;
+	count_person = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -29,7 +36,7 @@ static int	verify_appeared_char(char **map, t_map *human)
 		{
 			if (ft_strchr("NWSE", map[i][j]))
 			{
-				count_parson++;
+				count_person++;
 				human->point2d.x = j;
 				human->point2d.y = i;
 			}
@@ -37,20 +44,18 @@ static int	verify_appeared_char(char **map, t_map *human)
 		}
 		i++;
 	}
-	if (count_parson > 1)
-		return (MULTI_P);
-	if (count_parson == 0)
-		return (NOTHING_P);
-	return (0);
+	return (set_ret_val(count_person));
 }
 
 static bool	is_fail_map(char **map, size_t rowsize, int x, int y)
 {
 	if (x <= 0 || y <= 0 || (ft_strlen(map[y - 1])) <= x
-		|| (rowsize - 1) <= y)//Place at fail.
+		|| (rowsize - 1) <= y)
 		return (false);
-	if (ft_memchr(" \n\0", map[y - 1][x], 3) || ft_memchr(" \n\0", map[y][x + 1], 3)
-		|| ft_memchr(" \n\0", map[y + 1][x], 3) || ft_memchr(" \n\0", map[y][x - 1], 3))
+	if (ft_memchr(" \n\0", map[y - 1][x], 3)
+		|| ft_memchr(" \n\0", map[y][x + 1], 3)
+		|| ft_memchr(" \n\0", map[y + 1][x], 3)
+		|| ft_memchr(" \n\0", map[y][x - 1], 3))
 		return (false);
 	return (true);
 }
@@ -61,22 +66,22 @@ bool	is_map_surrounded_by_wall(char **map, size_t rowsize, int x, int y)
 		return (false);
 	if (map[y][x] == '0')
 		map[y][x] = VISITED;
-	if (0 < y && ft_strlen(map[y - 1]) >= x && map[y - 1][x] == '0')//Can Up
+	if (0 < y && ft_strlen(map[y - 1]) >= x && map[y - 1][x] == '0')
 	{
 		if (is_map_surrounded_by_wall(map, rowsize, x, y - 1) == false)
 			return (false);
 	}
-	if (ft_strlen(map[y]) >= x + 1 && map[y][x + 1] == '0')//Can right
+	if (ft_strlen(map[y]) >= x + 1 && map[y][x + 1] == '0')
 	{
 		if (is_map_surrounded_by_wall(map, rowsize, x + 1, y) == false)
 			return (false);
 	}
-	if (y < rowsize - 1 && ft_strlen(map[y + 1]) >= x && map[y + 1][x] == '0')//Can down
+	if (y < rowsize - 1 && ft_strlen(map[y + 1]) >= x && map[y + 1][x] == '0')
 	{
 		if (is_map_surrounded_by_wall(map, rowsize, x, y + 1) == false)
 			return (false);
 	}
-	if (0 < x && map[y][x - 1] == '0')//Can left
+	if (0 < x && map[y][x - 1] == '0')
 	{
 		if (is_map_surrounded_by_wall(map, rowsize, x - 1, y) == false)
 			return (false);
@@ -92,7 +97,7 @@ int	verify_map(t_meta *meta)
 	if (status != 0)
 		return (error_msg_file(status, 9999));
 	if (is_map_surrounded_by_wall(meta->map, count_row_of_matrix(meta->map), 
-		(int)meta->human.point2d.x, (int)meta->human.point2d.y) == false)
+			(int)meta->human.point2d.x, (int)meta->human.point2d.y) == false)
 		return (error_msg_file(NO_WALL, 9999));
 	return (0);
 }

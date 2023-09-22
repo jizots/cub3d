@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:15:08 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/20 14:39:28 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:18:28 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	perror_wrap(char *msg, int return_value)
 int	error_msg_file(int flag, size_t line)
 {
 	printf("Error\n");
-	if (flag == MULTI_P || flag == NOTHING_P)
-		printf("Line#%zu: Set only one person mark in map\n", line);
+	if (flag == PERSON_ERROR)
+		printf("Line#%zu: Set only or at-least one person mark in map\n", line);
 	if (flag == UNDEFINED_C)
 		printf ("Line#%zu: You can use only [0][1][N][S][W][E]\n", line);
 	if (flag == NO_WALL)
