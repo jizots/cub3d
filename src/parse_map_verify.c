@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:06:52 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 14:54:57 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:35:15 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static int	verify_appeared_char(char **map, t_map *human)
 
 static bool	is_valid_position(char **map, size_t rowsize, int x, int y)
 {
-	if (x <= 0 || y <= 0 || (ft_strlen(map[y - 1])) <= x
-		|| (rowsize - 1) <= y)
+	if (x <= 0 || y <= 0 || (ft_strlen(map[y - 1])) <= (size_t)x
+		|| (rowsize - 1) <= (size_t)y)
 		return (false);
 	if (ft_memchr(" \n\0", map[y - 1][x], 3)
 		|| ft_memchr(" \n\0", map[y][x + 1], 3)
@@ -66,26 +66,19 @@ bool	is_map_surrounded_by_wall(char **map, size_t rowsize, int x, int y)
 		return (false);
 	if (map[y][x] == SPACE)
 		map[y][x] = VISITED;
-	if (0 < y && ft_strlen(map[y - 1]) >= x && map[y - 1][x] == SPACE)
-	{
-		if (is_map_surrounded_by_wall(map, rowsize, x, y - 1) == false)
-			return (false);
-	}
-	if (ft_strlen(map[y]) >= x + 1 && map[y][x + 1] == SPACE)
-	{
-		if (is_map_surrounded_by_wall(map, rowsize, x + 1, y) == false)
-			return (false);
-	}
-	if (y < rowsize - 1 && ft_strlen(map[y + 1]) >= x && map[y + 1][x] == SPACE)
-	{
-		if (is_map_surrounded_by_wall(map, rowsize, x, y + 1) == false)
-			return (false);
-	}
-	if (0 < x && map[y][x - 1] == SPACE)
-	{
-		if (is_map_surrounded_by_wall(map, rowsize, x - 1, y) == false)
-			return (false);
-	}
+	if (0 < y && ft_strlen(map[y - 1]) >= (size_t)x && map[y - 1][x] == SPACE
+		&& is_map_surrounded_by_wall(map, rowsize, x, y - 1) == false)
+		return (false);
+	if (ft_strlen(map[y]) >= ((size_t)x + 1) && map[y][x + 1] == SPACE
+		&& is_map_surrounded_by_wall(map, rowsize, x + 1, y) == false)
+		return (false);
+	if ((size_t)y < rowsize - 1 && ft_strlen(map[y + 1]) >= (size_t)x
+		&& map[y + 1][x] == SPACE
+		&& is_map_surrounded_by_wall(map, rowsize, x, y + 1) == false)
+		return (false);
+	if (0 < x && map[y][x - 1] == SPACE
+		&& is_map_surrounded_by_wall(map, rowsize, x - 1, y) == false)
+		return (false);
 	return (true);
 }
 

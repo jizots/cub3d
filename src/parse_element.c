@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/21 11:22:21 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:28:49 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static int	parse_color(char **split, t_meta *meta, int flag)
 {
 	int		rgb[3];
 	int		status;
-	int		i;
 
 	if (count_row_of_matrix(split) != 2)
 		return (FAIL_ELEM);
