@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 17:47:01 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:49:50 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ static void	init_meta(t_meta *meta)
 	meta->floor_color = -1;
 	meta->ceiling_color = -1;
 	meta->map = NULL;
+	meta->mlx.mlx = NULL;
+	meta->mlx.win = NULL;
+	meta->mlx.img = NULL;
+	meta->mlx.addr = NULL;
 }
 
 int	main(int ac, char *av[])
@@ -32,22 +36,18 @@ int	main(int ac, char *av[])
 	init_meta(&meta);
 	if (cub3d_parse(av[1], &meta) != 0)
 		return (1);
+	if (cub3d_create_win(&meta) != 0)
+		;
+	cub3d_push_img_loop(&meta);
 
-	printf("north: %s\n", meta.north_tex);
-	printf("south: %s\n", meta.south_tex);
-	printf("west: %s\n", meta.west_tex);
-	printf("east: %s\n", meta.east_tex);
-	printf("floor: %d\n", meta.floor_color);
-	printf("ceiling: %d\n", meta.ceiling_color);
-
-	for (int i = 0; meta.map != NULL && meta.map[i] != NULL; i++)
-		printf("%s", meta.map[i]);
-	printf("Human:x_%f y_%f\n", meta.human.position.x, meta.human.position.y);
+for (int i = 0; meta.map != NULL && meta.map[i] != NULL; i++)
+	printf("%s", meta.map[i]);
+printf("Human:x_%f y_%f\n", meta.human.position.x, meta.human.position.y);
 	free_meta(&meta);
 	return (0);
 }
 
 __attribute__((destructor))
 static void destructor() {
-    system("leaks -q a.out");
+    system("leaks -q cub3D");
 }
