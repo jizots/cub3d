@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:14:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 18:29:22 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/23 18:46:23 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	try_open_path(char *path)
 {
 	int	fd;
 
-printf("path: %s\n", path);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (perror_wrap(path, PATH_ERROR));
