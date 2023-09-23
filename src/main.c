@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 17:49:50 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/23 18:53:21 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ int	main(int ac, char *av[])
 	init_meta(&meta);
 	if (cub3d_parse(av[1], &meta) != 0)
 		return (1);
-	if (cub3d_create_win(&meta) != 0)
-		;
-	cub3d_push_img_loop(&meta);
 
 for (int i = 0; meta.map != NULL && meta.map[i] != NULL; i++)
 	printf("%s", meta.map[i]);
 printf("Human:x_%f y_%f\n", meta.human.position.x, meta.human.position.y);
+
+	if (cub3d_create_win(&meta) != 0)
+		;
+	cub3d_push_img_loop(&meta);
 	free_meta(&meta);
 	return (0);
 }
