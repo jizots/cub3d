@@ -10,6 +10,7 @@ SRCS = main.c\
 	mlx_hub.c\
 	parse_element.c\
 	parse_map_verify.c\
+	parse_utils.c\
 	mlx_win.c\
 	mlx_img.c\
 	mlx_hooks.c\

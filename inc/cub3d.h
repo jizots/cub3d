@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 17:57:42 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/23 18:02:08 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 /*-------difine------*/
 # define SPACE '0'
 # define WALL '1'
-# define SCREEN_WIDTH 1500
+# define SCREEN_WIDTH 1200
 # define SCREEN_HEIGHT 1200
 
 /*------typedef------*/

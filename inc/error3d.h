@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:12:35 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 14:18:09 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/23 18:10:20 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define UNDEFINED_C 2
 # define NO_WALL 3
 # define UNEXPETC_COLORCODE 4
+# define PATH_ERROR 5
 # define FAIL_ELEM -6
 # define SUCCESS_ELEM 1
 

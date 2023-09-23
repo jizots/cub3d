@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:50:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 14:33:44 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/23 18:43:25 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,6 @@ static int	parse_elements(int fd, t_meta *meta)
 	}
 	if (flag != 6)
 		return (1);
-	return (0);
-}
-
-static int	get_map(int fd, t_meta *meta)
-{
-	char	*line;
-	char	**tmp_map;
-
-	while (1)
-	{
-		line = ft_gnl(fd);
-		if (line == NULL)
-			break ;
-		if (is_string_composedof(line, WHITE_SPACE) == false)
-		{
-			tmp_map = add_string_to_array(line, meta->map);
-			if (tmp_map == NULL)
-			{
-				free_map_null_terminated((void ***)&(meta->map));
-				return (perror_wrap("parse_map: ", 1));
-			}
-			meta->map = tmp_map;
-		}
-		else
-			free(line);
-	}
-	if (meta->map == NULL)
-		return (printf("Error. No map data\n"));
 	return (0);
 }
 

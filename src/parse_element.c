@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 16:28:49 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/23 18:42:33 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static int	copy_path_of_texture(char **split, t_meta *meta)
 	else if (ft_memcmp(split[0], "EA", 3) == 0)
 		meta->east_tex = ft_strdup(split[1]);
 	else
+		return (FAIL_ELEM);
+	if (try_open_path(split[1]) != 0)
 		return (FAIL_ELEM);
 	return (0);
 }
