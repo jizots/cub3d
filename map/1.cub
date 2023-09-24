@@ -1,7 +1,7 @@
-NO /Users/sotanaka/cub3d/cubxd/texture/colorstone.png
-SO /Users/sotanaka/cub3d/cubxd/texture/eagle.png
-WE /Users/sotanaka/cub3d/cubxd/texture/redbrick.png
-EA /Users/sotanaka/cub3d/cubxd/texture/bluestone.png
+NO ./texture/colorstone.png
+SO ./texture/eagle.png
+WE ./texture/redbrick.png
+EA ./texture/bluestone.png
 
 F 220,100,0
 C 225,30,0

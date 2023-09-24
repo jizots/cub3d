@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 18:02:08 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 10:39:17 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # define SPACE '0'
 # define WALL '1'
 # define SCREEN_WIDTH 1200
-# define SCREEN_HEIGHT 1200
+# define SCREEN_HEIGHT 800
 
 /*------typedef------*/
 typedef struct s_human
