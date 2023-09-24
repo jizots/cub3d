@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error3d.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:12:35 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 18:10:20 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 11:29:32 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define NO_WALL 3
 # define UNEXPETC_COLORCODE 4
 # define PATH_ERROR 5
+# define FILENAME_ERROR 6
 # define FAIL_ELEM -6
 # define SUCCESS_ELEM 1
 

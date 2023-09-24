@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:50:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 18:43:25 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 11:31:28 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	cub3d_parse(char *file, t_meta *meta)
 	int		fd;
 	int		status;
 
+	if (ends_with_str(file, ".cub") == false)
+		return (error_msg_file(FILENAME_ERROR, 0));
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (perror_wrap("open: ", 1));
