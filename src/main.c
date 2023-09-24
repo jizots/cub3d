@@ -6,28 +6,42 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 16:27:55 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:53:40 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	init_meta(t_meta *meta)
+static int	init_meta(t_meta *meta)
 {
 	meta->floor_color = -1;
 	meta->ceiling_color = -1;
 	meta->map = NULL;
-	meta->mlx.mlx = NULL;
+	meta->mlx.mlx = mlx_init();
+	if (meta->mlx.mlx == NULL)
+		return (perror_wrap("Error. at mlx_int", 1));
 	meta->mlx.win = NULL;
 	meta->mlx.img = NULL;
 	meta->mlx.addr = NULL;
+	meta->north_tex.filepath = NULL;
+	meta->south_tex.filepath = NULL;
+	meta->west_tex.filepath = NULL;
+	meta->east_tex.filepath = NULL;
+	return (0);
 }
 
 void	test_human_circle(t_meta *meta)
 {
+	t_point2d	center;
+	int			radius;
+	int			color;
 
+	center.x = meta->human.position.x * 10;
+	center.y = meta->human.position.y * 10;
+	radius = 10;
+	color = 0x00FF0000;
+	my_mlx_draw_circle(meta, center, radius, color);
 }
-
 
 int	main(int ac, char *av[])
 {
@@ -35,13 +49,16 @@ int	main(int ac, char *av[])
 
 	if (ac != 2)
 		return (printf("Error. Invalid argument\n"));
-	init_meta(&meta);
+	if (init_meta(&meta) != 0)
+		return (1);
 	if (cub3d_parse(av[1], &meta) != 0)
 		return (1);
 
-for (int i = 0; meta.map != NULL && meta.map[i] != NULL; i++)
-	printf("%s", meta.map[i]);
-printf("Human:x_%f y_%f\n", meta.human.position.x, meta.human.position.y);
+// for (int i = 0; meta.map != NULL && meta.map[i] != NULL; i++)
+// 	printf("%s", meta.map[i]);
+// printf("Human:x_%f y_%f\n", meta.human.position.x, meta.human.position.y);
+// printf("vector:%f\n", meta.human.vector);
+// printf("width:%zu height:%zu\n", meta.width_map, meta.height_map);
 
 	if (cub3d_create_win(&meta) != 0)
 		;

@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 17:28:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 16:29:14 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:24:28 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int		verify_map(t_meta *meta);
 int		get_map(int fd, t_meta *meta);
 int		try_open_path(char *path);
 int		init_texture(t_meta *meta);
+int		get_best_row_size(char **map);
+void	set_human_vector(char **map, t_human *human);
 
 #endif

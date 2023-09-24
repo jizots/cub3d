@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:14:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 16:26:56 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:07:22 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ int	try_open_path(char *path)
 
 int	init_texture(t_meta *meta)
 {
-	meta->north_tex.img = mlx_png_file_to_image(
-			meta->mlx.mlx, meta->north_tex.filepath,
-			&(meta->north_tex.img_width), &(meta->north_tex.img_height));
+	meta->north_tex.img = mlx_png_file_to_image(meta->mlx.mlx, meta->north_tex.filepath, &(meta->north_tex.img_width), &(meta->north_tex.img_height));
 	meta->south_tex.img = mlx_png_file_to_image(
 			meta->mlx.mlx, meta->south_tex.filepath,
 			&(meta->south_tex.img_width), &(meta->south_tex.img_height));
@@ -69,4 +67,34 @@ int	init_texture(t_meta *meta)
 		|| meta->west_tex.img == NULL || meta->east_tex.img == NULL)
 		return (printf("Error.\nat mlx_png_file_to_image\n"));
 	return (0);
+}
+
+int	get_best_row_size(char **map)
+{
+	int		i;
+	int		max;
+	int		tmp;
+
+	i = 0;
+	max = 0;
+	while (map[i] != NULL)
+	{
+		tmp = ft_strlen(map[i]);
+		if (max < tmp)
+			max = tmp;
+		i++;
+	}
+	return (max);
+}
+
+void	set_human_vector(char **map, t_human *human)
+{
+	if (map[(int)(human->position.y)][(int)(human->position.x)] == 'E')
+		human->vector = get_radian(0);
+	else if (map[(int)(human->position.y)][(int)(human->position.x)] == 'N')
+		human->vector = get_radian(90);
+	else if (map[(int)(human->position.y)][(int)(human->position.x)] == 'W')
+		human->vector = get_radian(180);
+	else if (map[(int)(human->position.y)][(int)(human->position.x)] == 'S')
+		human->vector = get_radian(270);
 }

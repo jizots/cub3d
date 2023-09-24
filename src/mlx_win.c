@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:52:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 17:53:25 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:46:16 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	my_mlx_create_win(t_mlx *mlx)
 {
-	mlx->mlx = mlx_init();
-	if (mlx->mlx == NULL)
-		return (perror_wrap("Error. at mlx_int", 1));
 	mlx->win
 		= mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3DDD");
 	if (mlx->win == NULL)

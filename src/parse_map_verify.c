@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:06:52 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/22 17:48:27 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:15:38 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,11 @@ int	verify_map(t_meta *meta)
 	status = verify_appeared_char(meta->map, &(meta->human));
 	if (status != 0)
 		return (error_msg_file(status, 9999));
+	set_human_vector(meta->map, &(meta->human));
 	if (is_map_surrounded_by_wall(meta->map, count_row_of_matrix(meta->map), 
 			(int)meta->human.position.x, (int)meta->human.position.y) == false)
 		return (error_msg_file(NO_WALL, 9999));
+	meta->width_map = get_best_row_size(meta->map);
+	meta->height_map = count_row_of_matrix(meta->map);
 	return (0);
 }

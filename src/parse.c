@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:50:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 16:26:30 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:32:59 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ static int	parse_elements(int fd, t_meta *meta)
 	{
 		line = ft_gnl(fd);
 		if (line == NULL)
-		{
-			printf("Error. Insufficient element\n");
-			break ;
-		}
+			return (printf("Error. Insufficient element\n"));
 		line_num++;
 		flag += parse_line_element(line, meta, line_num, flag);
 		if (flag < 0)
