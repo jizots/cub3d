@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_win.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:52:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 17:46:16 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 19:15:17 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	my_mlx_create_win(t_mlx *mlx)
 
 int	my_mlx_close_win(t_mlx *mlx)
 {
+	mlx_destroy_image(mlx->mlx, mlx->img);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	exit (0);
 }
