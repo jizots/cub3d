@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 18:42:33 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 15:29:30 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static int	copy_path_of_texture(char **split, t_meta *meta)
 	if (count_row_of_matrix(split) != 2)
 		return (FAIL_ELEM);
 	if (ft_memcmp(split[0], "NO", 3) == 0)
-		meta->north_tex = ft_strdup(split[1]);
+		meta->north_tex.filepath = ft_strdup(split[1]);
 	else if (ft_memcmp(split[0], "SO", 3) == 0)
-		meta->south_tex = ft_strdup(split[1]);
+		meta->south_tex.filepath = ft_strdup(split[1]);
 	else if (ft_memcmp(split[0], "WE", 3) == 0)
-		meta->west_tex = ft_strdup(split[1]);
+		meta->west_tex.filepath = ft_strdup(split[1]);
 	else if (ft_memcmp(split[0], "EA", 3) == 0)
-		meta->east_tex = ft_strdup(split[1]);
+		meta->east_tex.filepath = ft_strdup(split[1]);
 	else
 		return (FAIL_ELEM);
 	if (try_open_path(split[1]) != 0)

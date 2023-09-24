@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:14:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 18:46:23 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:26:56 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,25 @@ int	try_open_path(char *path)
 	if (fd == -1)
 		return (perror_wrap(path, PATH_ERROR));
 	close(fd);
+	return (0);
+}
+
+int	init_texture(t_meta *meta)
+{
+	meta->north_tex.img = mlx_png_file_to_image(
+			meta->mlx.mlx, meta->north_tex.filepath,
+			&(meta->north_tex.img_width), &(meta->north_tex.img_height));
+	meta->south_tex.img = mlx_png_file_to_image(
+			meta->mlx.mlx, meta->south_tex.filepath,
+			&(meta->south_tex.img_width), &(meta->south_tex.img_height));
+	meta->west_tex.img = mlx_png_file_to_image(
+			meta->mlx.mlx, meta->west_tex.filepath,
+			&(meta->west_tex.img_width), &(meta->west_tex.img_height));
+	meta->east_tex.img = mlx_png_file_to_image(
+			meta->mlx.mlx, meta->east_tex.filepath,
+			&(meta->east_tex.img_width), &(meta->east_tex.img_height));
+	if (meta->north_tex.img == NULL || meta->south_tex.img == NULL
+		|| meta->west_tex.img == NULL || meta->east_tex.img == NULL)
+		return (printf("Error.\nat mlx_png_file_to_image\n"));
 	return (0);
 }

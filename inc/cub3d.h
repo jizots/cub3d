@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 10:39:17 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/24 15:28:15 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # include "../../libsft/libsft/includes/libsft_utils.h"
 # include "error3d.h"
 # include <mlx.h>
+# include <mlx_png.h>
 
 /*-------difine------*/
 # define SPACE '0'
@@ -53,12 +54,20 @@ typedef struct s_mlx
 	int		endian;
 }	t_mlx;
 
+typedef struct s_tex
+{
+	void	*img;
+	char	*filepath;
+	int		img_width;
+	int		img_height;
+}	t_tex;
+
 typedef struct s_meta
 {
-	char	*north_tex;
-	char	*south_tex;
-	char	*west_tex;
-	char	*east_tex;
+	t_tex	north_tex;
+	t_tex	south_tex;
+	t_tex	west_tex;
+	t_tex	east_tex;
 	int		floor_color;
 	int		ceiling_color;
 	char	**map;
@@ -75,6 +84,7 @@ int		cub3d_create_win(t_meta *meta);
 void	cub3d_push_img_loop(t_meta *meta);
 int		cub3d_mlx_keypush(int keycode, t_meta *meta);
 //mlx
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 int		my_mlx_create_win(t_mlx *mlx);
 int		my_mlx_create_image_addr(t_mlx *mlx);
 void	my_mlx_image_clear(t_mlx *mlx);

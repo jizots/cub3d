@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/23 18:53:21 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:27:55 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 static void	init_meta(t_meta *meta)
 {
-	meta->north_tex = NULL;
-	meta->south_tex = NULL;
-	meta->west_tex = NULL;
-	meta->east_tex = NULL;
 	meta->floor_color = -1;
 	meta->ceiling_color = -1;
 	meta->map = NULL;
@@ -26,6 +22,12 @@ static void	init_meta(t_meta *meta)
 	meta->mlx.img = NULL;
 	meta->mlx.addr = NULL;
 }
+
+void	test_human_circle(t_meta *meta)
+{
+
+}
+
 
 int	main(int ac, char *av[])
 {
@@ -43,6 +45,7 @@ printf("Human:x_%f y_%f\n", meta.human.position.x, meta.human.position.y);
 
 	if (cub3d_create_win(&meta) != 0)
 		;
+	test_human_circle(&meta);
 	cub3d_push_img_loop(&meta);
 	free_meta(&meta);
 	return (0);

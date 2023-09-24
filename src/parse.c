@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:50:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 11:31:28 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/24 16:26:30 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	parse_elements(int fd, t_meta *meta)
 		free(line);
 	}
 	if (flag != 6)
+		return (1);
+	if (init_texture(meta) != 0)
 		return (1);
 	return (0);
 }
