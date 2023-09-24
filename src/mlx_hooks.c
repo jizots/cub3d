@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 18:12:10 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:35:01 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 	{
 	}
 	my_mlx_image_clear(&(meta->mlx));
+	my_mlx_create_image_addr(&(meta->mlx));
 test_human_circle(meta);
 	// ft_draw(meta, meta->mlx);
 mlx_put_image_to_window(meta->mlx.mlx, meta->mlx.win, meta->mlx.img, 0, 0);

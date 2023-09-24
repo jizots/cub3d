@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:50:06 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 18:25:49 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:35:14 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	my_mlx_create_image_addr(t_mlx *mlx)
 
 void	my_mlx_image_clear(t_mlx *mlx)
 {
-	ft_bzero(mlx->addr,
-		SCREEN_WIDTH * SCREEN_HEIGHT * mlx->bits_per_pixel);
+	ft_bzero(mlx->addr, mlx->bits_per_pixel);
 	mlx_destroy_image(mlx->mlx, mlx->img);
 }
