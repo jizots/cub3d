@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:50:06 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 19:16:33 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/26 13:06:15 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ int	my_mlx_create_image_addr(t_mlx *mlx)
 
 void	my_mlx_image_clear(t_mlx *mlx)
 {
-	ft_bzero(mlx->addr, SCREEN_HEIGHT * SCREEN_WIDTH * mlx->bits_per_pixel);
+	ft_bzero(mlx->addr, SCREEN_HEIGHT * SCREEN_WIDTH * (mlx->bits_per_pixel / 8));
 }

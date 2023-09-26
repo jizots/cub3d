@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 17:59:58 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:37:02 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # define WALL '1'
 # define SCREEN_WIDTH 900
 # define SCREEN_HEIGHT 900
+# define MINI_MAP_SCALE 0.2
 
 /*------typedef------*/
 typedef struct s_human
@@ -90,8 +91,10 @@ int		my_mlx_create_win(t_mlx *mlx);
 int		my_mlx_create_image_addr(t_mlx *mlx);
 void	my_mlx_image_clear(t_mlx *mlx);
 int		my_mlx_close_win(t_mlx *mlx);
-void	my_mlx_draw_circle(t_meta *meta, t_point2d center, int radius, int color);
+void	my_mlx_draw_circle(t_mlx *mlx, t_point2d center, int radius, int color);
+void	my_mlx_draw_vector(t_mlx *mlx, t_point2d center, double radian, int color);
 
 void	test_human_circle(t_meta *meta);
+void	test_human_vector(t_meta *meta);
 
 #endif
