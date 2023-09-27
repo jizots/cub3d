@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_draw.c                                         :+:      :+:    :+:   */
+/*   mlx_draw1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 13:37:03 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/26 14:00:09 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:49:25 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	my_mlx_draw_line_single_color(t_point2d *from, t_point2d *to, t_mlx *mlx, int color)
+void	my_mlx_draw_line_single_color(
+	t_point2d *from, t_point2d *to, t_mlx *mlx, int color)
 {
 	double	radius;
 	double	radian;
@@ -56,11 +57,12 @@ void	my_mlx_draw_circle(t_mlx *mlx, t_point2d center, int radius, int color)
 	}
 }
 
-void	my_mlx_draw_vector(t_mlx *mlx, t_point2d center, double radian, int color)
+void	my_mlx_draw_vector(
+	t_mlx *mlx, t_point2d center, double radian, int color)
 {
 	t_point2d	to;
 
 	to.x = 30 * cos(radian) + center.x;
 	to.y = 30 * sin(radian) + center.y;
-	my_mlx_draw_line_single_color(&center, &to, mlx, color);
+	my_mlx_draw_bresenham_line(mlx, center, to, color);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:14:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/26 14:26:25 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:48:37 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ int	try_open_path(char *path)
 
 int	init_texture(t_meta *meta)
 {
-	meta->north_tex.img = mlx_png_file_to_image(meta->mlx.mlx, meta->north_tex.filepath, &(meta->north_tex.img_width), &(meta->north_tex.img_height));
+	meta->north_tex.img = mlx_png_file_to_image(
+			meta->mlx.mlx, meta->north_tex.filepath,
+			&(meta->north_tex.img_width), &(meta->north_tex.img_height));
 	meta->south_tex.img = mlx_png_file_to_image(
 			meta->mlx.mlx, meta->south_tex.filepath,
 			&(meta->south_tex.img_width), &(meta->south_tex.img_height));
