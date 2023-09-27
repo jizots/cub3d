@@ -13,7 +13,8 @@ SRCS = main.c\
 	parse_utils.c\
 	mlx_win.c\
 	mlx_img.c\
-	mlx_draw.c\
+	mlx_draw1.c\
+	mlx_draw_bresenham.c\
 	mlx_hooks.c\
 	free.c\
 	error_msg.c\
