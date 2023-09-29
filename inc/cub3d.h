@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/26 19:05:38 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/29 09:51:17 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,28 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 /*-------difine------*/
 # define SPACE '0'
 # define WALL '1'
-# define MINI_MAP_SCALE 0.2
+# define MAP_WIDTH 900
+# define MAP_HEIGHT 900
+# define HUMAN_RADIUS 5
+# define MOVE_SPEED 3
+# define WALL_COLOR 0x00FFFFFF
+/*
+About coordinate system.
+The origin is the upper left corner.
+The x-axis is the horizontal line.
+X increases to the right of window.
+The y-axis is the vertical line.
+Y increases to the bottom of window.
+The unit is pixel.
+Degrees are measured clockwise from the x-axis.
+*/
 
 /*------typedef------*/
 typedef struct s_human
 {
 	t_point2d	position;
 	double		vector;
+	int			color;
 }	t_human;
 
 typedef struct s_tex
@@ -57,7 +72,7 @@ typedef struct s_meta
 	t_tex	east_tex;
 	int		floor_color;
 	int		ceiling_color;
-	double	scale;
+	double	map_scale;
 	char	**map;
 	t_human	human;
 	size_t	width_map;
@@ -71,8 +86,8 @@ void	free_meta(t_meta *meta);
 int		cub3d_create_win(t_meta *meta);
 void	cub3d_push_img_loop(t_meta *meta);
 int		cub3d_mlx_keypush(int keycode, t_meta *meta);
-
-void	test_human_circle(t_meta *meta);
-void	test_human_vector(t_meta *meta);
+void	cub3d_draw_map(t_meta *meta);
+void	draw_human(t_meta *meta);
+void	draw_map(t_meta *meta);
 
 #endif

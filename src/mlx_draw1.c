@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 13:37:03 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/27 14:49:25 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/27 15:12:59 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	my_mlx_draw_vector(
 {
 	t_point2d	to;
 
-	to.x = 30 * cos(radian) + center.x;
-	to.y = 30 * sin(radian) + center.y;
+	to.x = VECTOR_SCALE * cos(radian) + center.x;
+	to.y = VECTOR_SCALE * sin(radian) + center.y;
 	my_mlx_draw_bresenham_line(mlx, center, to, color);
 }

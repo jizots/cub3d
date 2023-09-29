@@ -3,17 +3,20 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -I./inc
 CFLAGS += -I./minilibx
-COPTIONS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit -L/usr/lib -lz
+# CFLAGS += -g -fsanitize=address
+COPTIONS = -L/usr/local/lib -framework OpenGL -framework AppKit -L/usr/lib -lz
 
 SRCS = main.c\
 	parse.c\
 	mlx_hub.c\
 	parse_element.c\
 	parse_map_verify.c\
+	draw_map.c\
 	parse_utils.c\
 	mlx_win.c\
 	mlx_img.c\
 	mlx_draw1.c\
+	mlx_draw2.c\
 	mlx_draw_bresenham.c\
 	mlx_hooks.c\
 	free.c\
