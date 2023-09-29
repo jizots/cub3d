@@ -6,11 +6,12 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:50:06 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/29 10:04:47 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/29 10:12:44 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_mlx.h"
+#include "error3d.h"
 
 int	my_mlx_create_image_addr(t_mlx *mlx)
 {

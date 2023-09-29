@@ -6,11 +6,12 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:52:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/29 10:04:58 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/29 10:12:22 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_mlx.h"
+#include "error3d.h"
 
 int	my_mlx_create_win(t_mlx *mlx)
 {
