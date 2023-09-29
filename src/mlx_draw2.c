@@ -6,11 +6,11 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:36:02 by hotph             #+#    #+#             */
-/*   Updated: 2023/09/28 14:54:42 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/29 10:04:20 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "my_mlx.h"
 
 void	my_mlx_draw_square(t_mlx *mlx, t_point2d center, int size, int color)
 {
