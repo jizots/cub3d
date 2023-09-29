@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:14:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/27 14:48:37 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/29 09:35:04 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ int	get_best_row_size(char **map)
 
 void	set_human_vector(char **map, t_human *human)
 {
-	if (map[(int)(human->position.y)][(int)(human->position.x)] == 'W')
+	if (map[(int)(human->position.y)][(int)(human->position.x)] == 'E')
 		human->vector = get_radian(0);
 	else if (map[(int)(human->position.y)][(int)(human->position.x)] == 'S')
 		human->vector = get_radian(90);
-	else if (map[(int)(human->position.y)][(int)(human->position.x)] == 'E')
+	else if (map[(int)(human->position.y)][(int)(human->position.x)] == 'W')
 		human->vector = get_radian(180);
 	else if (map[(int)(human->position.y)][(int)(human->position.x)] == 'N')
 		human->vector = get_radian(270);

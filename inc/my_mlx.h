@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:57:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/27 12:08:04 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:37:14 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 /*-------difine------*/
 # define SCREEN_WIDTH 900
 # define SCREEN_HEIGHT 900
+# define VECTOR_SCALE 10
 
 /*------typedef------*/
 typedef struct s_mlx
@@ -41,7 +42,8 @@ typedef struct s_bresenham
 	t_point2d	p2;
 	int			deltax;
 	int			deltay;
-	double		slope;
+	double		fslope;
+	int			minus_slope;
 	int			set_x;
 	int			set_y;
 	int			gap;
@@ -58,5 +60,6 @@ void	my_mlx_draw_circle(t_mlx *mlx, t_point2d center, int radius, int color);
 void	my_mlx_draw_vector(t_mlx *mlx, t_point2d center, double radian, int color);
 void	my_mlx_draw_line_single_color(t_point2d *from, t_point2d *to, t_mlx *mlx, int color);
 void	my_mlx_draw_bresenham_line(t_mlx *mlx, t_point2d p1, t_point2d p2, int color);
+void	my_mlx_draw_square(t_mlx *mlx, t_point2d center, int size, int color);
 
 #endif
