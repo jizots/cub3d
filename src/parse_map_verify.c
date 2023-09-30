@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_verify.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:06:52 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 17:15:38 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:46:24 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static int	verify_appeared_char(char **map, t_human *human)
 			if (ft_strchr("NWSE", map[i][j]))
 			{
 				count_person++;
-				human->position.x = j;
-				human->position.y = i;
+				human->point.x = j;
+				human->point.y = i;
 			}
 			j++;
 		}
@@ -91,7 +91,7 @@ int	verify_map(t_meta *meta)
 		return (error_msg_file(status, 9999));
 	set_human_vector(meta->map, &(meta->human));
 	if (is_map_surrounded_by_wall(meta->map, count_row_of_matrix(meta->map), 
-			(int)meta->human.position.x, (int)meta->human.position.y) == false)
+			(int)meta->human.point.x, (int)meta->human.point.y) == false)
 		return (error_msg_file(NO_WALL, 9999));
 	meta->width_map = get_best_row_size(meta->map);
 	meta->height_map = count_row_of_matrix(meta->map);

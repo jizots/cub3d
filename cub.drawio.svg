@@ -1,4 +1,4 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="261px" height="176px" viewBox="-0.5 -0.5 261 176" content="&lt;mxfile&gt;&lt;diagram id=&quot;UDusEh0Nm5hcY7_01m2s&quot; name=&quot;Page-1&quot;&gt;7ZZBU6swEMc/DTO+QzsF2qpH22q9ePLgOcIWMoaElwRL/fRvlwSBFq06Ht8Fkl92N7th/2mDeF3UW83K/EGlIIJoltZBvAmiaDGL8Ung4MBVNHcg0zx1KOzAI38DD2eeVjwFMzC0SgnLyyFMlJSQ2AFjWqv90GynxHDXkmVwAh4TJk7pE09t3lZx2fF74Fne7hwur91KwVpjX4nJWar2PRTfBvFaK2XdqKjXIOjs2nNxfncfrL4npkHarzhEzuGVicrXFkRLga6rncIImKA9+KqXfyvKajUYZf7duJiSyVEXijUxzWe8QYPwqqw/DVS1YKuYMC3FKqpjS2Ru1yH+MPnjTOZnMnnWLZmg+QOTKbNKH8aXn1hztokSghuupBk3o40LLnnBSsrxYCwUvXpc7idlDnE0qC6yUBPPbSEQhDhkgmcSxwJ2tPIK2nJs4BuPC56m5LzSgKfBnptAM5yXikvbyGOxChYbilRZ5U6sCWysVi+wVkJpJFJJirLjQhyh0070zUmpQN1DvjO3oAqwdLYzv9qKxN8S4cJN953kwrk3yXtyu/aMeZVn74E7IeDAa2FcF/H3dfHjJr/HC4AuMLcfxw6D5qoozzT+WKN0nfZrUqCW3UBp88mOa9PEAqaTHAcX3ND30E0j77klticRxHd/ziT6g+vltLYvXzif1bbOIXlxssX+pXdK549SxyfYZDqdnrlt/quTjNt5T57RckSel9+XJ067n8Rmrfe/Ir79Bw==&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="391px" height="241px" viewBox="-0.5 -0.5 391 241" content="&lt;mxfile&gt;&lt;diagram id=&quot;UDusEh0Nm5hcY7_01m2s&quot; name=&quot;Page-1&quot;&gt;7VY7c6MwEP41zNwVeAzYOC79iJ0mVYrUCgjQRCBOLDG+X3+7IGwwOE4yaTJzDZI+rVb7+hZZ3iat9prlyaMKubTcaVhZ3tZy3eV0iV8Cjg3g04qAWIuwgZwz8CT+cgNODVqKkBc9QVBKgsj7YKCyjAfQw5jW6tAXi5Ts35qzmA+Ap4DJIfosQkga9M5dnPEHLuKkvdnxjcMpa4WNJ0XCQnXoQN695W20UtDM0mrDJcWujUtzbndl92SY5hl85ICJ+xuTpfHNcn2JR9eRQg1oIByN1/6fkqxa92axGesjRc6y0SOkyy7qNK5QwLnLq3cVlS2wV0wWLYpelJeSiDW39uGrxl9aMrthyYtuERvFH1kWMlD6OL79zOrYBkpKUQiVFeNidHEqMpGynGw8FsDTjj+N7QM3+7Db884FXhGeQCoRcHDKpIgznEse0c4b1yCwgFcGTkUY0uG15hgN9lIrmuI6VyKDmh7ztTXfkqYSVBOxWnEBWr3yjZJKI5KpjLREQsoLaFiJpjjJFF51IFOZe65SDhTbqdltSWK6hDNvlocz5ZyZEUk6dFsajBmWxyfFZyLgxHBhnBfe53nx5SJ/wAZADay5T2CF8bpV5DcKf6xQzpX2bVSgkt3yHBI7ErqodXGmgwQnv0RB+dB1IR8EEHYgEni73zcM/UJ7Gfr24Ybznm+bhAevDW2xfmkMKf5IdfxyCCaTyY1u85+dJNyuO/R0/RF6Lr6BnrMBPRMA+vmvSIW7y7lOWSgmgcLOunOWSx+HKfaPnWZHO2AFiCy2AWOnBZM2UIhtFdn4YABOESYtPyWLg5SNJPZqFmf9LLrusMl6i5Esep/PIkX/9LCp9zqvQ+/+Hw==&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs/>
     <g>
         <rect x="0" y="0" width="140" height="90" fill="none" stroke="none" pointer-events="all"/>
@@ -60,6 +60,23 @@
                 </foreignObject>
                 <text x="2" y="144" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
                     How to validate map...
+                </text>
+            </switch>
+        </g>
+        <rect x="20" y="210" width="370" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 225px; margin-left: 22px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: nowrap;">
+                                https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="22" y="229" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    https://permadi.com/1996/05/ray-casting-tutorial-table-of-con...
                 </text>
             </switch>
         </g>

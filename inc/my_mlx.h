@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:57:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/28 17:37:14 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/30 11:19:43 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define SCREEN_WIDTH 900
 # define SCREEN_HEIGHT 900
 # define VECTOR_SCALE 10
+# define IS_RIGHT_DIRECTION(v) (v < M_PI / 2 || v > M_PI * 3 / 2)
+# define IS_UP_DIRECTION(v) (v > M_PI)
 
 /*------typedef------*/
 typedef struct s_mlx
