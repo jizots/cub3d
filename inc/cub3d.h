@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 15:04:29 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/30 15:31:34 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,19 @@ Degrees are measured clockwise from the x-axis.
 /*
  * @brief 'vector' is direction the human is looking at. Radian value.
  * @brief 'fov' means [field of view].
+ * @brief 'color' is the drawing color of the human.
 */
 typedef struct s_human
 {
 	t_point2d	point;
 	double		vector;
-	int			color;
 	double		fov;
+	int			color;
 }	t_human;
 
+/*
+ * @brief 't_tex' is data of wall texture. It's used to draw wall on minilibx functions.
+*/
 typedef struct s_tex
 {
 	void	*img;
@@ -83,6 +87,12 @@ typedef struct s_meta
 	t_mlx	mlx;
 }	t_meta;
 
+/*
+ * @brief 'intersection' is the point where the ray hits the wall.
+ * @brief 'tan_ray' is the tangent of the ray. It's used to calculate the
+ *  x or y coordinate of the intersection.
+ * @brief 'flag' is used to determine whether the ray stand on vertical or horizontal intersection.
+*/
 typedef struct s_ray
 {
 	t_point2d	intersection;
