@@ -6,11 +6,11 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:52:29 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/28 17:45:36 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/29 10:06:35 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "my_mlx.h"
 
 void	bresenham_line_degree_315_45(t_mlx *mlx, t_bresenham *brs, int color)
 {

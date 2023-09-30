@@ -12,6 +12,7 @@ SRCS = main.c\
 	parse_element.c\
 	parse_map_verify.c\
 	draw_map.c\
+	draw_raycast.c\
 	parse_utils.c\
 	mlx_win.c\
 	mlx_img.c\

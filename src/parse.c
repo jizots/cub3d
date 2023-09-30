@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:50:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 17:32:59 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:32:11 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ static int	parse_elements(int fd, t_meta *meta)
 		line_num++;
 		flag += parse_line_element(line, meta, line_num, flag);
 		if (flag < 0)
+		{
+			free(line);
 			break ;
+		}
 		free(line);
 	}
 	if (flag != 6)

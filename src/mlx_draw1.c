@@ -6,11 +6,11 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 13:37:03 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/27 15:12:59 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/29 10:04:10 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "my_mlx.h"
 
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 {

@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/28 19:01:04 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/30 14:48:43 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_meta_data(t_meta *meta)
 {
 	for (int i = 0; meta->map != NULL && meta->map[i] != NULL; i++)
 		printf("%s", meta->map[i]);
-	printf("Human:x_%f y_%f\n", meta->human.position.x, meta->human.position.y);
+	printf("Human:x_%f y_%f\n", meta->human.point.x, meta->human.point.y);
 	printf("vector:%f\n", meta->human.vector);
 	printf("width:%zu height:%zu\n", meta->width_map, meta->height_map);
 }
@@ -29,7 +29,8 @@ static int	init_meta(t_meta *meta)
 	meta->mlx.mlx = mlx_init();
 	if (meta->mlx.mlx == NULL)
 		return (perror_wrap("Error. at mlx_int", 1));
-	meta->human.color = 0x00FF0000;
+	meta->human.color = HUMAN_COLOR;
+	meta->human.fov = M_PI / 3;
 	return (0);
 }
 
