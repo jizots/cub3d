@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:32:53 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 15:02:30 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/01 13:15:07 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	draw_wall_of_map(t_meta *meta)
 			if (meta->map[i][j] == '1')
 			{
 				my_mlx_draw_square(&(meta->mlx),
-					(t_point2d){j, i},
+					(t_point2df){j, i},
 					meta->tile_size, WALL_COLOR);
 			}
 			j++;

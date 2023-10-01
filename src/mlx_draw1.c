@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_draw1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 13:37:03 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/29 10:04:10 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/01 13:15:07 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 }
 
 void	my_mlx_draw_line_single_color(
-	t_point2d *from, t_point2d *to, t_mlx *mlx, int color)
+	t_point2df *from, t_point2df *to, t_mlx *mlx, int color)
 {
 	double	radius;
 	double	radian;
@@ -41,7 +41,7 @@ void	my_mlx_draw_line_single_color(
 	}
 }
 
-void	my_mlx_draw_circle(t_mlx *mlx, t_point2d center, int radius, int color)
+void	my_mlx_draw_circle(t_mlx *mlx, t_point2df center, int radius, int color)
 {
 	double	x;
 	double	y;
@@ -58,9 +58,9 @@ void	my_mlx_draw_circle(t_mlx *mlx, t_point2d center, int radius, int color)
 }
 
 void	my_mlx_draw_vector(
-	t_mlx *mlx, t_point2d center, double radian, int color)
+	t_mlx *mlx, t_point2df center, double radian, int color)
 {
-	t_point2d	to;
+	t_point2df	to;
 
 	to.x = VECTOR_SCALE * cos(radian) + center.x;
 	to.y = VECTOR_SCALE * sin(radian) + center.y;

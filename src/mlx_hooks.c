@@ -3,58 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 20:25:52 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/01 13:46:56 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "keycode.h"
 
-void	human_walk(t_meta *meta, int keycode)
+void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 {
-	t_point2d	old_pos;
+	t_point2df		old_pos;
 	unsigned int	color;
 
-	old_pos = meta->human.point;
+	old_pos = human->point;
 	if (keycode == KEY_DOWN)
 	{
-		meta->human.point.y -= sin(meta->human.vector) * MOVE_SPEED;
-		meta->human.point.x -= cos(meta->human.vector) * MOVE_SPEED;
+		human->point.y -= sin(human->vector) * MOVE_SPEED;
+		human->point.x -= cos(human->vector) * MOVE_SPEED;
 	}
 	else if (keycode == KEY_UP)
 	{
-		meta->human.point.y += sin(meta->human.vector) * MOVE_SPEED;
-		meta->human.point.x += cos(meta->human.vector) * MOVE_SPEED;
+		human->point.y += sin(human->vector) * MOVE_SPEED;
+		human->point.x += cos(human->vector) * MOVE_SPEED;
 	}
 	else if (keycode == KEY_RIGHT)
 	{
-		meta->human.point.y += sin(meta->human.vector + get_radian(90)) * MOVE_SPEED;
-		meta->human.point.x += cos(meta->human.vector + get_radian(90)) * MOVE_SPEED;
+		human->point.y += sin(human->vector + get_radian(90)) * MOVE_SPEED;
+		human->point.x += cos(human->vector + get_radian(90)) * MOVE_SPEED;
 	}
 	else if (keycode == KEY_LEFT)
 	{
-		meta->human.point.y += sin(meta->human.vector + get_radian(-90)) * MOVE_SPEED;
-		meta->human.point.x += cos(meta->human.vector + get_radian(-90)) * MOVE_SPEED;
+		human->point.y += sin(human->vector + get_radian(-90)) * MOVE_SPEED;
+		human->point.x += cos(human->vector + get_radian(-90)) * MOVE_SPEED;
 	}
-	color = *((unsigned int *)(meta->mlx.addr + ((int)meta->human.point.y * meta->mlx.line_length
-		+ (int)meta->human.point.x * (meta->mlx.bits_per_pixel / 8))));
+	color = *((unsigned int *)(mlx->addr + ((int)human->point.y * mlx->line_length
+		+ (int)human->point.x * (mlx->bits_per_pixel / 8))));
 	if (color == WALL_COLOR)
-		meta->human.point = old_pos;
+		human->point = old_pos;
 }
 
-void	human_vector_rotate(t_meta *meta, int keycode)
+void	human_vector_rotate(t_human *human, int keycode)
 {
 	if (keycode == KEY_A)
-		meta->human.vector -= 0.1;
+		human->vector -= 0.1;
 	else if (keycode == KEY_D)
-		meta->human.vector += 0.1;
-	if (meta->human.vector < 0)
-		meta->human.vector += 2 * M_PI;
-	else if (meta->human.vector > 2 * M_PI)
-		meta->human.vector -= 2 * M_PI;
+		human->vector += 0.1;
+	if (human->vector < 0)
+		human->vector += 2 * M_PI;
+	else if (human->vector > 2 * M_PI)
+		human->vector -= 2 * M_PI;
 }
 
 int	cub3d_mlx_keypush(int keycode, t_meta *meta)
@@ -64,9 +64,9 @@ int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 	if (keycode == KEY_ESC)
 		return (my_mlx_close_win(&(meta->mlx)));
 	else if (KEY_LEFT <= keycode && keycode <= KEY_UP)
-		human_walk(meta, keycode);
+		human_walk(&(meta->human), &(meta->mlx), keycode);
 	else if (keycode == KEY_A || keycode == KEY_D)
-		human_vector_rotate(meta, keycode);
+		human_vector_rotate(&(meta->human), keycode);
 	draw_human(meta);
 	mlx_put_image_to_window(meta->mlx.mlx, meta->mlx.win, meta->mlx.img, 0, 0);
 	return (0);

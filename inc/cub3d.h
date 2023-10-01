@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 16:00:53 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/01 18:14:23 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # define MOVE_SPEED 3
 # define HUMAN_COLOR 0x00FF0000
 # define WALL_COLOR 0x00FFFFFF
-# define RAY_COLOR 0x00FFFF00
+# define RAY_COLOR 0xF58220
 /*
 About coordinate system.
 The origin is the upper left corner.
@@ -54,7 +54,7 @@ Degrees are measured clockwise from the x-axis.
 */
 typedef struct s_human
 {
-	t_point2d	point;
+	t_point2df	point;
 	double		vector;
 	double		fov;
 	int			color;
@@ -95,9 +95,8 @@ typedef struct s_meta
 */
 typedef struct s_ray
 {
-	t_point2d	intersection;
-	double		tan_ray;
-	double 		vector;
+	t_point2di	intersec;
+	double		vector;
 	int			flag;
 }	t_ray;
 
