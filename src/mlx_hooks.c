@@ -6,12 +6,26 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/01 13:46:56 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/01 19:28:25 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "keycode.h"
+
+void	human_walk2(t_human *human, int keycode)
+{
+	if (keycode == KEY_RIGHT)
+	{
+		human->point.y += sin(human->vector + get_radian(90)) * MOVE_SPEED;
+		human->point.x += cos(human->vector + get_radian(90)) * MOVE_SPEED;
+	}
+	else if (keycode == KEY_LEFT)
+	{
+		human->point.y += sin(human->vector + get_radian(-90)) * MOVE_SPEED;
+		human->point.x += cos(human->vector + get_radian(-90)) * MOVE_SPEED;
+	}
+}
 
 void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 {
@@ -29,16 +43,8 @@ void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 		human->point.y += sin(human->vector) * MOVE_SPEED;
 		human->point.x += cos(human->vector) * MOVE_SPEED;
 	}
-	else if (keycode == KEY_RIGHT)
-	{
-		human->point.y += sin(human->vector + get_radian(90)) * MOVE_SPEED;
-		human->point.x += cos(human->vector + get_radian(90)) * MOVE_SPEED;
-	}
-	else if (keycode == KEY_LEFT)
-	{
-		human->point.y += sin(human->vector + get_radian(-90)) * MOVE_SPEED;
-		human->point.x += cos(human->vector + get_radian(-90)) * MOVE_SPEED;
-	}
+	else
+		human_walk2(human, keycode);
 	color = *((unsigned int *)(mlx->addr + ((int)human->point.y * mlx->line_length
 		+ (int)human->point.x * (mlx->bits_per_pixel / 8))));
 	if (color == WALL_COLOR)

@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:32:53 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/01 13:15:07 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/01 19:26:16 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static void	init_map(t_meta *meta)
 		meta->tile_size = floor(MAP_HEIGHT / meta->height_map);
 	else
 		meta->tile_size = floor(MAP_WIDTH / meta->width_map);
-	meta->human.point.x = meta->human.point.x * meta->tile_size + meta->tile_size / 2;
-	meta->human.point.y = meta->human.point.y * meta->tile_size + meta->tile_size / 2;
+	meta->human.point.x = meta->human.point.x * meta->tile_size
+		+ meta->tile_size / 2;
+	meta->human.point.y = meta->human.point.y * meta->tile_size
+		+ meta->tile_size / 2;
 }
 
 void	draw_human(t_meta *meta)
