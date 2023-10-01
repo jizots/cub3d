@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:09:39 by hotph             #+#    #+#             */
-/*   Updated: 2023/09/30 14:50:15 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/30 17:39:00 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,29 +89,29 @@ void	update_current_point(
 	*flag_down = 0;
 }
 
-t_point2d	get_point2d_wall(t_ray *vertical, t_ray *horizontal, t_meta *meta)
+t_point2d	get_point2d_wall(t_ray *vertical, t_ray *horizontal, t_meta *meta, double vector_ray)
 {
 	t_point2d	current;
 
 	current = meta->human.point;
 	while (is_wall(current, meta) == false)
 	{
-		if ((IS_UP_DIRECTION(meta->human.vector)
+		if ((IS_UP_DIRECTION(vector_ray)
 				&& vertical->intersection.y > horizontal->intersection.y)
-			|| (!IS_UP_DIRECTION(meta->human.vector)
+			|| (!IS_UP_DIRECTION(vector_ray)
 				&& vertical->intersection.y < horizontal->intersection.y))
 		{
 			update_current_point(&current, &(vertical->intersection),
 				&(vertical->flag), &(horizontal->flag));
 			find_next_intersection_vertical(
-				current, vertical, meta->human.vector, meta->tile_size);
+				current, vertical, vector_ray, meta->tile_size);
 		}
 		else
 		{
 			update_current_point(&current, &(horizontal->intersection),
 				&(horizontal->flag), &(vertical->flag));
 			find_next_intersection_horizontal(
-				current, horizontal, meta->human.vector, meta->tile_size);
+				current, horizontal, vector_ray, meta->tile_size);
 		}
 	}
 	return (current);
@@ -123,17 +123,31 @@ void	draw_raycast_to_human_vector(t_meta *meta)
 	t_ray		vertical;
 	t_ray		horizontal;
 	t_point2d	wall;
+	double		adding_degree;
+	double		vector_ray;
 
-	vertical.flag = 0;
-	horizontal.flag = 0;
 	start = meta->human.point;
-	vertical.tan_ray = tan(meta->human.vector);
-	horizontal.tan_ray = vertical.tan_ray;
-	find_next_intersection_vertical(
-		start, &vertical, meta->human.vector, meta->tile_size);
-	find_next_intersection_horizontal(
-		start, &horizontal, meta->human.vector, meta->tile_size);
-	wall = get_point2d_wall(&vertical, &horizontal, meta);
-	my_mlx_draw_bresenham_line(
-		&(meta->mlx), meta->human.point, wall, RAY_COLOR);
+	adding_degree = 0;
+	while (adding_degree <= meta->human.fov)
+	{
+		vertical.flag = 0;
+		horizontal.flag = 0;
+		vector_ray = meta->human.vector - (meta->human.fov / 2) + adding_degree;
+		vertical.tan_ray = tan(vector_ray);
+		horizontal.tan_ray = vertical.tan_ray;
+// puts("---------------------");
+// printf("vector_ray:%f\n", vector_ray);
+// printf("start      x:%f y:%f\n", start.x, start.y);
+		find_next_intersection_vertical(
+			start, &vertical, vector_ray, meta->tile_size);
+// printf("vertical   x:%f y:%f\n", vertical.intersection.x, vertical.intersection.y);
+		find_next_intersection_horizontal(
+			start, &horizontal, vector_ray, meta->tile_size);
+// printf("horizontal x:%f y:%f\n", horizontal.intersection.x, horizontal.intersection.y);
+		wall = get_point2d_wall(&vertical, &horizontal, meta, vector_ray);
+// printf("wall       x:%f y:%f\n", wall.x, wall.y);
+		my_mlx_draw_bresenham_line(
+			&(meta->mlx), meta->human.point, wall, RAY_COLOR);
+		adding_degree += meta->human.fov / 6;
+	}
 }

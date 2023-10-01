@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 15:31:34 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/30 16:00:53 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_ray
 {
 	t_point2d	intersection;
 	double		tan_ray;
+	double 		vector;
 	int			flag;
 }	t_ray;
 

@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 15:02:13 by hotph            ###   ########.fr       */
+/*   Updated: 2023/09/30 20:25:52 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ void	human_vector_rotate(t_meta *meta, int keycode)
 
 int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 {
+	my_mlx_image_clear(&(meta->mlx));
+	draw_wall_of_map(meta);
 	if (keycode == KEY_ESC)
 		return (my_mlx_close_win(&(meta->mlx)));
 	else if (KEY_LEFT <= keycode && keycode <= KEY_UP)
 		human_walk(meta, keycode);
 	else if (keycode == KEY_A || keycode == KEY_D)
 		human_vector_rotate(meta, keycode);
-	my_mlx_image_clear(&(meta->mlx));
-	draw_wall_of_map(meta);
 	draw_human(meta);
 	mlx_put_image_to_window(meta->mlx.mlx, meta->mlx.win, meta->mlx.img, 0, 0);
 	return (0);
