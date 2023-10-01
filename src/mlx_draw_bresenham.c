@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_draw_bresenham.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:52:29 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/29 10:06:35 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/01 13:15:07 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	bresenham_line_degree_225_315(t_mlx *mlx, t_bresenham *brs, int color)
 }
 
 void	my_mlx_draw_bresenham_line(
-	t_mlx *mlx, t_point2d p1, t_point2d p2, int color)
+	t_mlx *mlx, t_point2df p1, t_point2df p2, int color)
 {
 	t_bresenham	brs;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 15:31:34 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/01 19:29:32 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # define MOVE_SPEED 3
 # define HUMAN_COLOR 0x00FF0000
 # define WALL_COLOR 0x00FFFFFF
-# define RAY_COLOR 0x00FFFF00
+# define RAY_COLOR 0xF58220
 /*
 About coordinate system.
 The origin is the upper left corner.
@@ -54,7 +54,7 @@ Degrees are measured clockwise from the x-axis.
 */
 typedef struct s_human
 {
-	t_point2d	point;
+	t_point2df	point;
 	double		vector;
 	double		fov;
 	int			color;
@@ -95,8 +95,8 @@ typedef struct s_meta
 */
 typedef struct s_ray
 {
-	t_point2d	intersection;
-	double		tan_ray;
+	t_point2di	intersec;
+	double		vector;
 	int			flag;
 }	t_ray;
 
@@ -110,6 +110,14 @@ void	cub3d_draw_map(t_meta *meta);
 void	draw_human(t_meta *meta);
 void	draw_wall_of_map(t_meta *meta);
 
+void	next_vertical_intersec(
+	t_point2di start, t_ray *verti, double vector, int tile_size);
+void	next_horizontal_intersec(
+	t_point2di start, t_ray *horiz, double vector, int tile_size);
 void	draw_raycast_to_human_vector(t_meta *meta);
+void	update_current_point(
+	t_point2di *current, t_point2di *next, int *flag_up, int *flag_down);
+	void	init_ray(
+	t_ray *verti, t_ray *horiz, t_meta *meta, double *adding_degree);
 
 #endif

@@ -3,115 +3,102 @@
 /*                                                        :::      ::::::::   */
 /*   draw_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:09:39 by hotph             #+#    #+#             */
-/*   Updated: 2023/09/30 14:50:15 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/01 19:20:09 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	find_next_intersection_vertical(
-	t_point2d start, t_ray *vertical, double vector, double tile_size)
+void	next_vertical_intersec(
+	t_point2di start, t_ray *verti, double vector, int tile_size)
 {
-	if (vertical->flag == 1)
+	if (verti->flag == 1)
 	{
-		if (IS_UP_DIRECTION(vector))
+		if (is_up_direction(vector))
 			tile_size *= -1;
-		vertical->intersection.y = start.y + tile_size;
-		vertical->intersection.x = start.x + tile_size / vertical->tan_ray;
+		verti->intersec.y = start.y + tile_size;
+		verti->intersec.x = start.x + round(tile_size / tan(vector));
 		return ;
 	}
 	if (almost_equal_double(vector, 0.0) || almost_equal_double(vector, M_PI))
 	{
-		vertical->intersection = start;
+		verti->intersec = start;
 		return ;
 	}
-	if (IS_UP_DIRECTION(vector))
-		vertical->intersection.y
-			= floor(start.y / tile_size) * tile_size - 1;
+	if (is_up_direction(vector))
+		verti->intersec.y = floor(start.y / tile_size) * tile_size - 1;
 	else
-		vertical->intersection.y
-			= floor(start.y / tile_size) * tile_size + tile_size;
-	vertical->intersection.x
-		= start.x + (vertical->intersection.y - start.y) / vertical->tan_ray;
+		verti->intersec.y = floor(start.y / tile_size) * tile_size + tile_size;
+	verti->intersec.x = start.x
+		+ round((verti->intersec.y - start.y) / tan(vector));
 }
 
-void	find_next_intersection_horizontal(
-	t_point2d start, t_ray *horizontal, double vector, double tile_size)
+void	next_horizontal_intersec(
+	t_point2di start, t_ray *horiz, double vector, int tile_size)
 {
-	if (horizontal->flag == 1)
+	if (horiz->flag == 1)
 	{
-		if (!IS_RIGHT_DIRECTION(vector))
+		if (!is_right_direction(vector))
 			tile_size *= -1;
-		horizontal->intersection.x = start.x + tile_size;
-		horizontal->intersection.y = start.y + tile_size * horizontal->tan_ray;
+		horiz->intersec.x = start.x + tile_size;
+		horiz->intersec.y = start.y + round(tile_size * tan(vector));
 		return ;
 	}
 	if (almost_equal_double(vector, M_PI / 2)
 		|| almost_equal_double(vector, M_PI * 3 / 2))
 	{
-		horizontal->intersection = start;
+		horiz->intersec = start;
 		return ;
 	}
-	if (IS_RIGHT_DIRECTION(vector))
-		horizontal->intersection.x
-			= floor(start.x / tile_size) * tile_size + tile_size;
+	if (is_right_direction(vector))
+		horiz->intersec.x = floor(start.x / tile_size) * tile_size + tile_size;
 	else
-		horizontal->intersection.x
-			= floor(start.x / tile_size) * tile_size - 1;
-	horizontal->intersection.y
-		= start.y
-		+ (horizontal->intersection.x - start.x) * horizontal->tan_ray;
+		horiz->intersec.x = floor(start.x / tile_size) * tile_size - 1;
+	horiz->intersec.y = start.y
+		+ round((horiz->intersec.x - start.x) * tan(vector));
 }
 
-bool	is_wall(t_point2d point, t_meta *meta)
+bool	is_wall(t_point2di point, t_mlx *mlx)
 {
 	unsigned int	color;
 
 	if (point.x < 0 || point.x >= SCREEN_WIDTH
 		|| point.y < 0 || point.y >= SCREEN_HEIGHT)
 		return (true);
-	color = *((unsigned int *)(meta->mlx.addr
-				+ ((int)point.y * meta->mlx.line_length
-					+ (int)point.x * (meta->mlx.bits_per_pixel / 8))));
+	color = *((unsigned int *)(mlx->addr + (point.y * mlx->line_length
+					+ point.x * (mlx->bits_per_pixel / 8))));
 	if (color == WALL_COLOR && color != HUMAN_COLOR && color != RAY_COLOR)
 		return (true);
 	return (false);
 }
 
-void	update_current_point(
-	t_point2d *current, t_point2d *next, int *flag_up, int *flag_down)
+t_point2di	get_point2d_wall(
+	t_ray *verti, t_ray *horiz, t_meta *meta, double vector_ray)
 {
-	*current = *next;
-	*flag_up = 1;
-	*flag_down = 0;
-}
+	t_point2di	current;
 
-t_point2d	get_point2d_wall(t_ray *vertical, t_ray *horizontal, t_meta *meta)
-{
-	t_point2d	current;
-
-	current = meta->human.point;
-	while (is_wall(current, meta) == false)
+	current = (t_point2di){(int)meta->human.point.x, (int)meta->human.point.y};
+	while (is_wall(current, &(meta->mlx)) == false)
 	{
-		if ((IS_UP_DIRECTION(meta->human.vector)
-				&& vertical->intersection.y > horizontal->intersection.y)
-			|| (!IS_UP_DIRECTION(meta->human.vector)
-				&& vertical->intersection.y < horizontal->intersection.y))
+		if ((is_up_direction(vector_ray)
+				&& verti->intersec.y > horiz->intersec.y)
+			|| (!is_up_direction(vector_ray)
+				&& verti->intersec.y < horiz->intersec.y))
 		{
-			update_current_point(&current, &(vertical->intersection),
-				&(vertical->flag), &(horizontal->flag));
-			find_next_intersection_vertical(
-				current, vertical, meta->human.vector, meta->tile_size);
+			update_current_point(&current, &(verti->intersec),
+				&(verti->flag), &(horiz->flag));
+			next_vertical_intersec(
+				current, verti, vector_ray, meta->tile_size);
 		}
 		else
 		{
-			update_current_point(&current, &(horizontal->intersection),
-				&(horizontal->flag), &(vertical->flag));
-			find_next_intersection_horizontal(
-				current, horizontal, meta->human.vector, meta->tile_size);
+			update_current_point(&current, &(horiz->intersec),
+				&(horiz->flag), &(verti->flag));
+			next_horizontal_intersec(
+				current, horiz, vector_ray, meta->tile_size);
 		}
 	}
 	return (current);
@@ -119,21 +106,18 @@ t_point2d	get_point2d_wall(t_ray *vertical, t_ray *horizontal, t_meta *meta)
 
 void	draw_raycast_to_human_vector(t_meta *meta)
 {
-	t_point2d	start;
-	t_ray		vertical;
-	t_ray		horizontal;
-	t_point2d	wall;
+	t_ray		verti;
+	t_ray		horiz;
+	t_point2di	wall;
+	double		adding_degree;
 
-	vertical.flag = 0;
-	horizontal.flag = 0;
-	start = meta->human.point;
-	vertical.tan_ray = tan(meta->human.vector);
-	horizontal.tan_ray = vertical.tan_ray;
-	find_next_intersection_vertical(
-		start, &vertical, meta->human.vector, meta->tile_size);
-	find_next_intersection_horizontal(
-		start, &horizontal, meta->human.vector, meta->tile_size);
-	wall = get_point2d_wall(&vertical, &horizontal, meta);
-	my_mlx_draw_bresenham_line(
-		&(meta->mlx), meta->human.point, wall, RAY_COLOR);
+	adding_degree = 0;
+	while (adding_degree <= meta->human.fov)
+	{
+		init_ray(&verti, &horiz, meta, &adding_degree);
+		wall = get_point2d_wall(&verti, &horiz, meta, verti.vector);
+		my_mlx_draw_bresenham_line(&(meta->mlx), meta->human.point,
+			(t_point2df){wall.x, wall.y}, RAY_COLOR);
+		adding_degree += meta->human.fov / 2;
+	}
 }

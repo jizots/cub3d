@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:32:53 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 15:02:30 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/01 19:26:16 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static void	init_map(t_meta *meta)
 		meta->tile_size = floor(MAP_HEIGHT / meta->height_map);
 	else
 		meta->tile_size = floor(MAP_WIDTH / meta->width_map);
-	meta->human.point.x = meta->human.point.x * meta->tile_size + meta->tile_size / 2;
-	meta->human.point.y = meta->human.point.y * meta->tile_size + meta->tile_size / 2;
+	meta->human.point.x = meta->human.point.x * meta->tile_size
+		+ meta->tile_size / 2;
+	meta->human.point.y = meta->human.point.y * meta->tile_size
+		+ meta->tile_size / 2;
 }
 
 void	draw_human(t_meta *meta)
@@ -43,7 +45,7 @@ void	draw_wall_of_map(t_meta *meta)
 			if (meta->map[i][j] == '1')
 			{
 				my_mlx_draw_square(&(meta->mlx),
-					(t_point2d){j, i},
+					(t_point2df){j, i},
 					meta->tile_size, WALL_COLOR);
 			}
 			j++;
