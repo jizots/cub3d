@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/01 19:29:32 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:09:42 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_meta
 */
 typedef struct s_ray
 {
-	t_point2di	intersec;
+	t_point2df	intersec;
 	double		vector;
 	int			flag;
 }	t_ray;
@@ -111,12 +111,12 @@ void	draw_human(t_meta *meta);
 void	draw_wall_of_map(t_meta *meta);
 
 void	next_vertical_intersec(
-	t_point2di start, t_ray *verti, double vector, int tile_size);
+	t_point2df start, t_ray *verti, double vector, int tile_size);
 void	next_horizontal_intersec(
-	t_point2di start, t_ray *horiz, double vector, int tile_size);
+	t_point2df start, t_ray *horiz, double vector, int tile_size);
 void	draw_raycast_to_human_vector(t_meta *meta);
 void	update_current_point(
-	t_point2di *current, t_point2di *next, int *flag_up, int *flag_down);
+	t_point2df *current, t_point2df *next, int *flag_up, int *flag_down);
 	void	init_ray(
 	t_ray *verti, t_ray *horiz, t_meta *meta, double *adding_degree);
 
