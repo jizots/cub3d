@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw_raycast_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:19:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/01 19:26:31 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:11:37 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void	update_current_point(
-	t_point2di *current, t_point2di *next, int *flag_up, int *flag_down)
+	t_point2df *current, t_point2df *next, int *flag_up, int *flag_down)
 {
 	*current = *next;
 	*flag_up = 1;
@@ -23,14 +23,14 @@ void	update_current_point(
 void	init_ray(
 	t_ray *verti, t_ray *horiz, t_meta *meta, double *adding_degree)
 {
-	t_point2di	start;
+	t_point2df	start;
 
-	start = (t_point2di){(int)meta->human.point.x, (int)meta->human.point.y};
+	start = meta->human.point;
 	verti->flag = 0;
 	horiz->flag = 0;
 	verti->vector = meta->human.vector - (meta->human.fov / 2) + *adding_degree;
 	horiz->vector = verti->vector;
 	set_radian_within_2pi(&(verti->vector));
-	next_vertical_intersec(start, verti, verti->vector, (int)meta->tile_size);
-	next_horizontal_intersec(start, horiz, horiz->vector, (int)meta->tile_size);
+	next_vertical_intersec(start, verti, verti->vector, meta->tile_size);
+	next_horizontal_intersec(start, horiz, horiz->vector, meta->tile_size);
 }
