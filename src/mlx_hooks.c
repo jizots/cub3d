@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/01 19:28:25 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:40:19 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 		human_walk(&(meta->human), &(meta->mlx), keycode);
 	else if (keycode == KEY_A || keycode == KEY_D)
 		human_vector_rotate(&(meta->human), keycode);
+	draw_view(meta);
 	draw_human(meta);
 	mlx_put_image_to_window(meta->mlx.mlx, meta->mlx.win, meta->mlx.img, 0, 0);
 	return (0);
