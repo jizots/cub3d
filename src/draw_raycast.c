@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:09:39 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/02 18:23:16 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/03 15:51:10 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ bool	is_wall(t_point2df point, t_mlx *mlx)
 	if (point.x < 0 || point.x >= SCREEN_WIDTH
 		|| point.y < 0 || point.y >= SCREEN_HEIGHT)
 		return (true);
-	color = *((unsigned int *)(mlx->addr + ((int)point.y * mlx->line_length
-					+ (int)point.x * (mlx->bits_per_pixel / 8))));
+	color = *((unsigned int *)(mlx->addr + ((int)round(point.y) * mlx->line_length
+					+ (int)round(point.x) * (mlx->bits_per_pixel / 8))));
 	if (color == WALL_COLOR && color != HUMAN_COLOR && color != RAY_COLOR)
 		return (true);
 	return (false);
@@ -102,22 +102,4 @@ t_point2df	get_point2d_wall(
 		}
 	}
 	return (current);
-}
-
-void	draw_raycast_to_human_vector(t_meta *meta)
-{
-	t_ray		verti;
-	t_ray		horiz;
-	t_point2df	wall;
-	double		adding_degree;
-
-	adding_degree = 0;
-	while (adding_degree <= meta->human.fov)
-	{
-		init_ray(&verti, &horiz, meta, &adding_degree);
-		wall = get_point2d_wall(&verti, &horiz, meta, verti.vector);
-		my_mlx_draw_bresenham_line(&(meta->mlx), meta->human.point,
-			(t_point2df){wall.x, wall.y}, RAY_COLOR);
-		adding_degree += meta->human.fov / 2;
-	}
 }

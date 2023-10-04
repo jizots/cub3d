@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/02 18:09:42 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 09:56:01 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,31 @@ typedef struct s_tex
 	int		img_height;
 }	t_tex;
 
+/*
+ * @brief 'intersection' is the point where the ray hits the wall.
+ * @brief 'tan_ray' is the tangent of the ray. It's used to calculate the
+ *  x or y coordinate of the intersection.
+ * @brief 'flag' is used to determine whether the ray stand on vertical or horizontal intersection.
+*/
+typedef struct s_ray
+{
+	t_point2df	intersec;
+	double		vector;
+	int			flag;
+}	t_ray;
+
+/*
+ * @brief	'dis' means distance. Between human and wall.
+ * @brief	'col' means column which column to projection.
+ * @brief	'dire' means 'direction', and indicates the direction of the wall that Ray hit.
+*/
+typedef struct s_collision
+{
+	double	dis;
+	int		col;
+	char	dire;
+}	t_collision;
+
 typedef struct s_meta
 {
 	t_tex	north_tex;
@@ -87,19 +112,6 @@ typedef struct s_meta
 	t_mlx	mlx;
 }	t_meta;
 
-/*
- * @brief 'intersection' is the point where the ray hits the wall.
- * @brief 'tan_ray' is the tangent of the ray. It's used to calculate the
- *  x or y coordinate of the intersection.
- * @brief 'flag' is used to determine whether the ray stand on vertical or horizontal intersection.
-*/
-typedef struct s_ray
-{
-	t_point2df	intersec;
-	double		vector;
-	int			flag;
-}	t_ray;
-
 /*------prototype------*/
 int		cub3d_parse(char *file_name, t_meta *meta);
 void	free_meta(t_meta *meta);
@@ -115,9 +127,14 @@ void	next_vertical_intersec(
 void	next_horizontal_intersec(
 	t_point2df start, t_ray *horiz, double vector, int tile_size);
 void	draw_raycast_to_human_vector(t_meta *meta);
+bool	is_wall(t_point2df point, t_mlx *mlx);
 void	update_current_point(
 	t_point2df *current, t_point2df *next, int *flag_up, int *flag_down);
-	void	init_ray(
+void	init_ray(
 	t_ray *verti, t_ray *horiz, t_meta *meta, double *adding_degree);
+t_point2df	get_point2d_wall(
+	t_ray *verti, t_ray *horiz, t_meta *meta, double vector_ray);
+void	draw_view(t_meta *meta);
+
 
 #endif
