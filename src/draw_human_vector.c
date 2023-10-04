@@ -6,11 +6,11 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:49:46 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/03 14:48:36 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 13:55:14 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "draw.h"
 
 void	draw_raycast_to_human_vector(t_meta *meta)
 {

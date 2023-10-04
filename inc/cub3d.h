@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/04 09:56:01 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:33:17 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,27 +114,13 @@ typedef struct s_meta
 
 /*------prototype------*/
 int		cub3d_parse(char *file_name, t_meta *meta);
-void	free_meta(t_meta *meta);
 int		cub3d_create_win(t_meta *meta);
+void	cub3d_draw_map(t_meta *meta);
+void	draw_wall_of_map(t_meta *meta);
+void	draw_human(t_meta *meta);
 void	cub3d_push_img_loop(t_meta *meta);
 int		cub3d_mlx_keypush(int keycode, t_meta *meta);
-void	cub3d_draw_map(t_meta *meta);
-void	draw_human(t_meta *meta);
-void	draw_wall_of_map(t_meta *meta);
-
-void	next_vertical_intersec(
-	t_point2df start, t_ray *verti, double vector, int tile_size);
-void	next_horizontal_intersec(
-	t_point2df start, t_ray *horiz, double vector, int tile_size);
-void	draw_raycast_to_human_vector(t_meta *meta);
-bool	is_wall(t_point2df point, t_mlx *mlx);
-void	update_current_point(
-	t_point2df *current, t_point2df *next, int *flag_up, int *flag_down);
-void	init_ray(
-	t_ray *verti, t_ray *horiz, t_meta *meta, double *adding_degree);
-t_point2df	get_point2d_wall(
-	t_ray *verti, t_ray *horiz, t_meta *meta, double vector_ray);
-void	draw_view(t_meta *meta);
+void	free_meta(t_meta *meta);
 
 
 #endif

@@ -6,35 +6,13 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/04 10:05:49 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 13:55:36 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "draw.h"
 
-char	which_direction(const t_ray *verti, const double radian)
-{
-	if (is_up_direction(radian))
-	{
-		if (verti->flag == 1)
-			return ('N');
-		else if (is_right_direction(radian))
-			return ('E');
-		else
-			return ('W');
-	}
-	else
-	{
-		if (verti->flag == 1)
-			return ('S');
-		else if (is_right_direction(radian))
-			return ('E');
-		else
-			return ('W');
-	}
-}
-
-t_collision	convert_collision_data(
+static t_collision	convert_collision_data(
 	const t_point2df *start, const t_point2df *wall,
 	const t_ray *verti)
 {
@@ -45,7 +23,7 @@ t_collision	convert_collision_data(
 	return (colli);
 }
 
-t_collision	get_fov_wall_data(t_meta *meta, const int col)
+static t_collision	get_fov_wall_data(t_meta *meta, const int col)
 {
 	t_ray		verti;
 	t_ray		horiz;
@@ -70,10 +48,7 @@ void	draw_view(t_meta *meta)
 	while (col < SCREEN_WIDTH)
 	{
 		colli = get_fov_wall_data(meta, col);
-// printf("%c", colli.dire);
 		col++;
-if (col == SCREEN_WIDTH / 2)
-// puts("------");
 	}
-// printf("\n");
+	(void)colli;
 }

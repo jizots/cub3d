@@ -6,11 +6,11 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:32:53 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/03 15:34:53 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:34:15 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "draw.h"
 
 static void	init_map(t_meta *meta)
 {
