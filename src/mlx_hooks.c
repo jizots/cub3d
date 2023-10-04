@@ -6,24 +6,24 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/03 15:40:19 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 12:46:12 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "draw.h"
 #include "keycode.h"
 
 void	human_walk2(t_human *human, int keycode)
 {
 	if (keycode == KEY_RIGHT)
 	{
-		human->point.y += sin(human->vector + get_radian(90)) * MOVE_SPEED;
-		human->point.x += cos(human->vector + get_radian(90)) * MOVE_SPEED;
+		human->point.y += round(sin(human->vector + get_radian(90)) * MOVE_SPEED);
+		human->point.x += round(cos(human->vector + get_radian(90)) * MOVE_SPEED);
 	}
 	else if (keycode == KEY_LEFT)
 	{
-		human->point.y += sin(human->vector + get_radian(-90)) * MOVE_SPEED;
-		human->point.x += cos(human->vector + get_radian(-90)) * MOVE_SPEED;
+		human->point.y += round(sin(human->vector + get_radian(-90)) * MOVE_SPEED);
+		human->point.x += round(cos(human->vector + get_radian(-90)) * MOVE_SPEED);
 	}
 }
 
@@ -35,13 +35,13 @@ void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 	old_pos = human->point;
 	if (keycode == KEY_DOWN)
 	{
-		human->point.y -= sin(human->vector) * MOVE_SPEED;
-		human->point.x -= cos(human->vector) * MOVE_SPEED;
+		human->point.y -= round(sin(human->vector) * MOVE_SPEED);
+		human->point.x -= round(cos(human->vector) * MOVE_SPEED);
 	}
 	else if (keycode == KEY_UP)
 	{
-		human->point.y += sin(human->vector) * MOVE_SPEED;
-		human->point.x += cos(human->vector) * MOVE_SPEED;
+		human->point.y += round(sin(human->vector) * MOVE_SPEED);
+		human->point.x += round(cos(human->vector) * MOVE_SPEED);
 	}
 	else
 		human_walk2(human, keycode);

@@ -6,11 +6,33 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:19:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/03 14:48:54 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:37:57 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "draw.h"
+
+char	which_direction(const t_ray *verti, const double radian)
+{
+	if (is_up_direction(radian))
+	{
+		if (verti->flag == 1)
+			return ('N');
+		else if (is_right_direction(radian))
+			return ('E');
+		else
+			return ('W');
+	}
+	else
+	{
+		if (verti->flag == 1)
+			return ('S');
+		else if (is_right_direction(radian))
+			return ('E');
+		else
+			return ('W');
+	}
+}
 
 void	update_current_point(
 	t_point2df *current, t_point2df *next, int *flag_up, int *flag_down)
