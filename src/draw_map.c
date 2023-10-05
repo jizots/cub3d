@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:32:53 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/04 10:34:15 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/05 13:35:08 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void	cub3d_draw_map(t_meta *meta)
 {
 	init_map(meta);
 	draw_wall_of_map(meta);
-	draw_view(meta);
+	cub3d_draw_view(meta);
 	draw_human(meta);
 }

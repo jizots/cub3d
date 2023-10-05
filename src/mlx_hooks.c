@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/04 12:46:12 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/05 10:10:04 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	human_walk2(t_human *human, int keycode)
 {
 	if (keycode == KEY_RIGHT)
 	{
-		human->point.y += round(sin(human->vector + get_radian(90)) * MOVE_SPEED);
-		human->point.x += round(cos(human->vector + get_radian(90)) * MOVE_SPEED);
+		human->point.y += sin(human->vector + get_radian(90)) * MOVE_SPEED;
+		human->point.x += cos(human->vector + get_radian(90)) * MOVE_SPEED;
 	}
 	else if (keycode == KEY_LEFT)
 	{
-		human->point.y += round(sin(human->vector + get_radian(-90)) * MOVE_SPEED);
-		human->point.x += round(cos(human->vector + get_radian(-90)) * MOVE_SPEED);
+		human->point.y += sin(human->vector + get_radian(-90)) * MOVE_SPEED;
+		human->point.x += cos(human->vector + get_radian(-90)) * MOVE_SPEED;
 	}
 }
 
@@ -35,13 +35,13 @@ void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 	old_pos = human->point;
 	if (keycode == KEY_DOWN)
 	{
-		human->point.y -= round(sin(human->vector) * MOVE_SPEED);
-		human->point.x -= round(cos(human->vector) * MOVE_SPEED);
+		human->point.y -= sin(human->vector) * MOVE_SPEED;
+		human->point.x -= cos(human->vector) * MOVE_SPEED;
 	}
 	else if (keycode == KEY_UP)
 	{
-		human->point.y += round(sin(human->vector) * MOVE_SPEED);
-		human->point.x += round(cos(human->vector) * MOVE_SPEED);
+		human->point.y += sin(human->vector) * MOVE_SPEED;
+		human->point.x += cos(human->vector) * MOVE_SPEED;
 	}
 	else
 		human_walk2(human, keycode);
@@ -73,7 +73,8 @@ int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 		human_walk(&(meta->human), &(meta->mlx), keycode);
 	else if (keycode == KEY_A || keycode == KEY_D)
 		human_vector_rotate(&(meta->human), keycode);
-	draw_view(meta);
+	cub3d_draw_view(meta);
+	draw_wall_of_map(meta);
 	draw_human(meta);
 	mlx_put_image_to_window(meta->mlx.mlx, meta->mlx.win, meta->mlx.img, 0, 0);
 	return (0);

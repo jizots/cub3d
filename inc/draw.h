@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:32:12 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/04 13:51:46 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 17:52:55 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "cub3d.h"
 
-void		draw_view(t_meta *meta);
 t_point2df	get_point2d_wall(
 		t_ray *verti, t_ray *horiz, t_meta *meta, double vector_ray);
 void		init_ray(
