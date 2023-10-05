@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 14:48:43 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/04 17:52:31 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int ac, char *av[])
 		return (1);
 	if (cub3d_create_win(&meta) != 0)
 		return (1);
+	
 	cub3d_draw_map(&meta);
 	cub3d_push_img_loop(&meta);
 	free_meta(&meta);
