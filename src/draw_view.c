@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/05 13:34:23 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/08 11:01:31 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,19 @@ static t_collision	get_fov_wall_data(t_meta *meta, const int col)
 	t_ray		horiz;
 	t_point2df	wall;
 	double		adding_radian;
-	t_collision colli;
+	t_collision	colli;
 
 	adding_radian = (meta->human.fov / SCREEN_WIDTH) * col;
 	init_ray(&verti, &horiz, meta, &adding_radian);
-// puts("--------------------");
-// printf("verti.x:%f verti.y:%f\n", verti.intersec.x, verti.intersec.y);
-// printf("horiz.x:%f horiz.y:%f\n", horiz.intersec.x, horiz.intersec.y);
 	wall = get_point2d_wall(&verti, &horiz, meta, verti.vector);
-// printf("wall.x:%f wall.y:%f\n", wall.x, wall.y);
 	colli = convert_collision_data(&(meta->human.point), &wall, &verti);
 	colli.col = col;
-// printf("meta->tile:%f colli.dis:%f colli.dire:%c colli.col:%d\n", meta->tile_size, colli.dis, colli.dire, colli.col);
 	colli.tex_x = get_tex_x(&wall, colli.dire, meta->tile_size);
 	return (colli);
 }
 
-int	cub3d_select_color(t_meta *meta, t_collision *colli, int row, const double zoom_ratio)
+int	cub3d_select_color(
+	t_meta *meta, t_collision *colli, int row, const double zoom_ratio)
 {
 	int		color;
 	(void)meta;
@@ -68,7 +64,8 @@ int	cub3d_select_color(t_meta *meta, t_collision *colli, int row, const double z
 	return (color);
 }
 
-int simple_color_set(t_meta *meta, t_collision *colli, int row, const double zoom_ratio)
+int	simple_color_set(
+	t_meta *meta, t_collision *colli, int row, const double zoom_ratio)
 {
 	int		color;
 	(void)meta;
@@ -90,13 +87,14 @@ int simple_color_set(t_meta *meta, t_collision *colli, int row, const double zoo
 
 bool	is_map(int x, int y, t_meta *meta)
 {
-	if (x < (meta->tile_size * meta->width_map) && y < (meta->tile_size * meta->height_map))
+	if (x < (meta->tile_size * meta->width_map)
+		&& y < (meta->tile_size * meta->height_map))
 		return (true);
 	return (false);
 }
 
-
-void	draw_texture_on_each_col(t_meta *meta, t_collision *colli, const double *base_dis)
+void	draw_texture_on_each_col(
+	t_meta *meta, t_collision *colli, const double *base_dis)
 {
 	int		i;
 	int		color;
@@ -128,11 +126,10 @@ void	cub3d_draw_view(t_meta *meta)
 {
 	int			col;
 	t_collision	colli;
-	double	base_dis;
+	double		base_dis;
 
 	base_dis = (meta->tile_size / 2) / tan(meta->human.fov / 2);
 	col = 0;
-// puts("--------------------");
 	while (col < SCREEN_WIDTH)
 	{
 		colli = get_fov_wall_data(meta, col);

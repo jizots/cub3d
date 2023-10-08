@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/05 10:10:04 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/08 10:58:41 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 	}
 	else
 		human_walk2(human, keycode);
-	color = *((unsigned int *)(mlx->addr + ((int)human->point.y * mlx->line_length
-		+ (int)human->point.x * (mlx->bits_per_pixel / 8))));
+	color = *((unsigned int *)(mlx->addr
+				+ ((int)human->point.y * mlx->line_length
+					+ (int)human->point.x * (mlx->bits_per_pixel / 8))));
 	if (color == WALL_COLOR)
 		human->point = old_pos;
 }

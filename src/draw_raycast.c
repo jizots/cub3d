@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:09:39 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/04 13:57:04 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/08 11:02:43 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	next_vertical_intersec(
 		return ;
 	}
 	if (is_up_direction(vector))
-		verti->intersec.y = floor(start.y / tile_size) * tile_size - 1;
+		verti->intersec.y = floor(start.y / tile_size) * tile_size - 0.0001;
 	else
 		verti->intersec.y = floor(start.y / tile_size) * tile_size + tile_size;
 	verti->intersec.x = start.x
 		+ ((verti->intersec.y - start.y) / tan(vector));
-	}
+}
 
 void	next_horizontal_intersec(
 	t_point2df start, t_ray *horiz, double vector, int tile_size)
@@ -56,24 +56,21 @@ void	next_horizontal_intersec(
 	if (is_right_direction(vector))
 		horiz->intersec.x = floor(start.x / tile_size) * tile_size + tile_size;
 	else
-		horiz->intersec.x = floor(start.x / tile_size) * tile_size - 1;
+		horiz->intersec.x = floor(start.x / tile_size) * tile_size - 0.0001;
 	horiz->intersec.y = start.y
 		+ ((horiz->intersec.x - start.x) * tan(vector));
 }
 
-bool	is_wall(t_point2df point, t_mlx *mlx, double vector_ray)
+bool	is_wall(t_point2df point, t_mlx *mlx)
 {
 	unsigned int	color;
-	if (is_up_direction(vector_ray))
-		point.y = ceil(point.y);
-	if (!is_right_direction(vector_ray))
-		point.x = ceil(point.x);	 
+
 	if (point.x < 0 || point.x >= SCREEN_WIDTH
 		|| point.y < 0 || point.y >= SCREEN_HEIGHT)
 		return (true);
 	color = *((unsigned int *)(mlx->addr + ((int)point.y * mlx->line_length
 					+ (int)point.x * (mlx->bits_per_pixel / 8))));
-	if (color == WALL_COLOR && color != HUMAN_COLOR && color != RAY_COLOR)
+	if (color == WALL_COLOR)
 		return (true);
 	return (false);
 }
@@ -84,7 +81,7 @@ t_point2df	get_point2d_wall(
 	t_point2df	current;
 
 	current = meta->human.point;
-	while (is_wall(current, &(meta->mlx), vector_ray) == false)
+	while (is_wall(current, &(meta->mlx)) == false)
 	{
 		if ((is_up_direction(vector_ray)
 				&& verti->intersec.y > horiz->intersec.y)
