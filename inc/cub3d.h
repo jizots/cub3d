@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/04 20:26:33 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/08 10:48:27 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ typedef struct s_human
 }	t_human;
 
 /*
- * @brief 't_tex' is data of wall texture. It's used to draw wall on minilibx functions.
+ * @brief	't_tex' is data of wall texture.
+ * @brief	It's used to draw wall on minilibx functions.
 */
 typedef struct s_tex
 {
@@ -72,10 +73,11 @@ typedef struct s_tex
 }	t_tex;
 
 /*
- * @brief 'intersection' is the point where the ray hits the wall.
- * @brief 'tan_ray' is the tangent of the ray. It's used to calculate the
+ * @brief	'intersection' is the point where the ray hits the wall.
+ * @brief	'tan_ray' is the tangent of the ray. It's used to calculate the
  *  x or y coordinate of the intersection.
- * @brief 'flag' is used to determine whether the ray stand on vertical or horizontal intersection.
+ * @brief	'flag' is used to determine 
+ * @brief	whether the ray stand on vertical or horizontal intersection.
 */
 typedef struct s_ray
 {
@@ -87,7 +89,8 @@ typedef struct s_ray
 /*
  * @brief	'dis' means distance. Between human and wall.
  * @brief	'col' means column which column to projection.
- * @brief	'dire' means 'direction', and indicates the direction of the wall that Ray hit.
+ * @brief	'dire' means 'direction',
+ * @brief	and indicates the direction of the wall that Ray hit.
 */
 typedef struct s_collision
 {
@@ -123,6 +126,5 @@ void	draw_human(t_meta *meta);
 void	cub3d_push_img_loop(t_meta *meta);
 int		cub3d_mlx_keypush(int keycode, t_meta *meta);
 void	free_meta(t_meta *meta);
-
 
 #endif

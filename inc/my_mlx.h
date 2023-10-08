@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_mlx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:57:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/01 14:11:47 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:49:47 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,15 @@ int		my_mlx_create_win(t_mlx *mlx);
 int		my_mlx_create_image_addr(t_mlx *mlx);
 void	my_mlx_image_clear(t_mlx *mlx);
 int		my_mlx_close_win(t_mlx *mlx);
-void	my_mlx_draw_circle(t_mlx *mlx, t_point2df center, int radius, int color);
-void	my_mlx_draw_vector(t_mlx *mlx, t_point2df center, double radian, int color);
-void	my_mlx_draw_line_single_color(t_point2df *from, t_point2df *to, t_mlx *mlx, int color);
-void	my_mlx_draw_bresenham_line(t_mlx *mlx, t_point2df p1, t_point2df p2, int color);
-void	my_mlx_draw_square(t_mlx *mlx, t_point2df center, int size, int color);
+void	my_mlx_draw_circle(
+			t_mlx *mlx, t_point2df center, int radius, int color);
+void	my_mlx_draw_vector(
+			t_mlx *mlx, t_point2df center, double radian, int color);
+void	my_mlx_draw_line_single_color(
+			t_point2df *from, t_point2df *to, t_mlx *mlx, int color);
+void	my_mlx_draw_bresenham_line(
+			t_mlx *mlx, t_point2df p1, t_point2df p2, int color);
+void	my_mlx_draw_square(
+			t_mlx *mlx, t_point2df center, int size, int color);
 
 #endif
