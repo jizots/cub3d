@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 16:09:56 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/09 16:42:31 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,8 @@ typedef struct s_meta
 /*------prototype------*/
 int		cub3d_parse(char *file_name, t_meta *meta);
 int		cub3d_create_win(t_meta *meta);
-void	cub3d_draw_view(t_meta *meta);
 void	cub3d_draw_map(t_meta *meta);
-void	draw_minimap(t_meta *meta);
+void	cub3d_draw_view(t_meta *meta);
 void	cub3d_draw_human(t_meta *meta);
 void	cub3d_push_img_loop(t_meta *meta);
 int		cub3d_mlx_keypush(int keycode, t_meta *meta);

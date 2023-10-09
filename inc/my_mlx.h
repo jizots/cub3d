@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:57:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 10:46:14 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/09 16:43:39 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void	my_mlx_draw_line_single_color(
 void	my_mlx_draw_bresenham_line(
 			t_mlx *mlx, t_point2df p1, t_point2df p2, int color);
 void	my_mlx_draw_square(
-			t_mlx *mlx, t_point2df center, int size, int color);
+			t_mlx *mlx, t_point2df top_left, int size, int color);
 
 #endif
