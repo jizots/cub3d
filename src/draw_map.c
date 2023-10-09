@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:32:53 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/05 13:35:08 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/09 16:11:59 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,28 @@ static void	init_map(t_meta *meta)
 		+ meta->tile_size / 2;
 }
 
-void	draw_human(t_meta *meta)
+void	draw_sky_and_ground(t_meta *meta)
 {
-	draw_raycast_to_human_vector(meta);
-	my_mlx_draw_circle(&(meta->mlx),
-		meta->human.point, HUMAN_RADIUS, meta->human.color);
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < SCREEN_HEIGHT)
+	{
+		j = 0;
+		while (j < SCREEN_WIDTH)
+		{
+			if (i < SCREEN_HEIGHT / 2)
+				my_mlx_pixel_put(&(meta->mlx), j, i, meta->ceiling_color);
+			else
+				my_mlx_pixel_put(&(meta->mlx), j, i, meta->floor_color);
+			j++;
+		}
+		i++;
+	}
 }
 
-void	draw_wall_of_map(t_meta *meta)
+void	draw_minimap(t_meta *meta)
 {
 	int		i;
 	int		j;
@@ -57,7 +71,6 @@ void	draw_wall_of_map(t_meta *meta)
 void	cub3d_draw_map(t_meta *meta)
 {
 	init_map(meta);
-	draw_wall_of_map(meta);
-	cub3d_draw_view(meta);
-	draw_human(meta);
+	draw_sky_and_ground(meta);
+	draw_minimap(meta);
 }

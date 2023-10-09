@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_view.c                                        :+:      :+:    :+:   */
+/*   draw_view_wall.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/08 11:01:31 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/09 16:28:38 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,6 @@ static t_collision	convert_collision_data(
 	colli.dis = distance_of_point(*start, *wall);
 	colli.dire = which_direction(verti, verti->vector);
 	return (colli);
-}
-
-static double	get_tex_x(
-	t_point2df *wall, const char dire, const int tile_size)
-{
-	double	integer;
-
-	if (dire == 'N' || dire == 'S')
-		return (modf((wall->x / tile_size), &integer));
-	else
-		return (modf((wall->y / tile_size), &integer));
 }
 
 static t_collision	get_fov_wall_data(t_meta *meta, const int col)
@@ -52,47 +41,35 @@ static t_collision	get_fov_wall_data(t_meta *meta, const int col)
 }
 
 int	cub3d_select_color(
-	t_meta *meta, t_collision *colli, int row, const double zoom_ratio)
+	t_meta *meta, t_collision *colli, double row)
 {
 	int		color;
-	(void)meta;
-	(void)zoom_ratio;
-	(void)colli;
-	(void)row;
 
-	color = 0x00FFFFFF;//default color
-	return (color);
-}
-
-int	simple_color_set(
-	t_meta *meta, t_collision *colli, int row, const double zoom_ratio)
-{
-	int		color;
-	(void)meta;
-	(void)zoom_ratio;
-	(void)row;
-	
 	if (colli->dire == 'N')
-		color = 0x00FF0000;
+		color = get_color_from_texture(meta->north_tex,
+				round(meta->north_tex.img_width * colli->tex_x),
+				round(meta->north_tex.img_height * row));
 	else if (colli->dire == 'S')
-		color = 0x0000FF00;
+		color = get_color_from_texture(meta->south_tex,
+				round(meta->south_tex.img_width * colli->tex_x),
+				round(meta->south_tex.img_height * row));
 	else if (colli->dire == 'W')
-		color = 0x000000FF;
+		color = get_color_from_texture(meta->west_tex,
+				round(meta->west_tex.img_width * colli->tex_x),
+				round(meta->west_tex.img_height * row));
 	else if (colli->dire == 'E')
-		color = 0x00FFFF00;
+		color = get_color_from_texture(meta->east_tex,
+				round(meta->east_tex.img_width * colli->tex_x),
+				round(meta->east_tex.img_height * row));
 	else
 		color = 0x00FFFFFF;
 	return (color);
 }
 
-bool	is_map(int x, int y, t_meta *meta)
-{
-	if (x < (meta->tile_size * meta->width_map)
-		&& y < (meta->tile_size * meta->height_map))
-		return (true);
-	return (false);
-}
-
+/*
+ * @brief 'zoom_ratio' is the number of times the tile is magnified.
+ * @brief Example: If the player can see 2 tiles hight, the zoom_ratio is 2.
+*/
 void	draw_texture_on_each_col(
 	t_meta *meta, t_collision *colli, const double *base_dis)
 {
@@ -101,27 +78,29 @@ void	draw_texture_on_each_col(
 	double	zoom_ratio;
 	int		ignore;
 
-	zoom_ratio = *base_dis / colli->dis;
-	ignore = (SCREEN_HEIGHT - (SCREEN_HEIGHT * zoom_ratio)) / 2;
+	zoom_ratio = colli->dis / *base_dis;
+	ignore = (SCREEN_HEIGHT - (SCREEN_HEIGHT / zoom_ratio)) / 2;
 	if (ignore < 0)
 		i = 0;
 	else
 		i = ignore;
-	while (i < SCREEN_HEIGHT)
+	while (i < SCREEN_HEIGHT - ignore)
 	{
 		if (is_map(colli->col, i, meta) == true)
 			;
 		else
 		{
-			color =  simple_color_set(meta, colli, i, zoom_ratio); //cub3d_select_color(meta, colli, i, zoom_ratio);
+			color = cub3d_select_color(
+					meta, colli, (i - ignore) / (SCREEN_HEIGHT / zoom_ratio));
 			my_mlx_pixel_put(&(meta->mlx), colli->col, i, color);
 		}
 		i++;
-		if (i >= SCREEN_HEIGHT - ignore)
-			break ;
 	}
 }
 
+/*
+ * @brief 'base_dis' is the distance that the player just sees the one tile.
+*/
 void	cub3d_draw_view(t_meta *meta)
 {
 	int			col;

@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/08 10:48:27 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/09 16:09:56 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # define HUMAN_COLOR 0x00FF0000
 # define WALL_COLOR 0x00FFFFFF
 # define RAY_COLOR 0xF58220
+
 /*
 About coordinate system.
 The origin is the upper left corner.
@@ -59,18 +60,6 @@ typedef struct s_human
 	double		fov;
 	int			color;
 }	t_human;
-
-/*
- * @brief	't_tex' is data of wall texture.
- * @brief	It's used to draw wall on minilibx functions.
-*/
-typedef struct s_tex
-{
-	void	*img;
-	char	*filepath;
-	int		img_width;
-	int		img_height;
-}	t_tex;
 
 /*
  * @brief	'intersection' is the point where the ray hits the wall.
@@ -121,8 +110,8 @@ int		cub3d_parse(char *file_name, t_meta *meta);
 int		cub3d_create_win(t_meta *meta);
 void	cub3d_draw_view(t_meta *meta);
 void	cub3d_draw_map(t_meta *meta);
-void	draw_wall_of_map(t_meta *meta);
-void	draw_human(t_meta *meta);
+void	draw_minimap(t_meta *meta);
+void	cub3d_draw_human(t_meta *meta);
 void	cub3d_push_img_loop(t_meta *meta);
 int		cub3d_mlx_keypush(int keycode, t_meta *meta);
 void	free_meta(t_meta *meta);

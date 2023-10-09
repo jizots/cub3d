@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:50:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/29 10:32:11 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/09 16:32:19 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ int	cub3d_parse(char *file, t_meta *meta)
 	if (status == 0)
 		status = parse_map(fd, meta);
 	if (status != 0)
+	{
 		free_meta(meta);
+		my_mlx_close_win(&(meta->mlx));
+	}
 	close(fd);
 	return (status);
 }

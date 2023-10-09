@@ -13,8 +13,9 @@ SRCS = main.c\
 	parse_map_verify.c\
 	draw_map.c\
 	draw_raycast.c\
-	draw_view.c\
-	draw_human_vector.c\
+	draw_view_wall.c\
+	draw_view_utils.c\
+	draw_human.c\
 	parse_utils.c\
 	mlx_win.c\
 	mlx_img.c\
