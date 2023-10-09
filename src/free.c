@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:24:21 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/29 10:28:55 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/09 16:24:22 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ void	free_meta(t_meta *meta)
 		free(meta->east_tex.filepath);
 	if (meta->east_tex.img)
 		mlx_destroy_image(meta->mlx.mlx, meta->east_tex.img);
-	if (meta->mlx.img)
-		mlx_destroy_image(meta->mlx.mlx, meta->mlx.img);
-	if (meta->mlx.win)
-		mlx_destroy_window(meta->mlx.mlx, meta->mlx.win);
 	if (meta->map)
 		free_map_null_terminated((void ***)&(meta->map));
 }

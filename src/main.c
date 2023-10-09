@@ -6,20 +6,11 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/05 20:54:17 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/09 16:27:46 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	print_meta_data(t_meta *meta)
-{
-	for (int i = 0; meta->map != NULL && meta->map[i] != NULL; i++)
-		printf("%s", meta->map[i]);
-	printf("Human:x_%f y_%f\n", meta->human.point.x, meta->human.point.y);
-	printf("vector:%f\n", meta->human.vector);
-	printf("width:%zu height:%zu\n", meta->width_map, meta->height_map);
-}
 
 static int	init_meta(t_meta *meta)
 {
@@ -47,13 +38,16 @@ int	main(int ac, char *av[])
 	if (cub3d_create_win(&meta) != 0)
 		return (1);
 	cub3d_draw_map(&meta);
+	cub3d_draw_view(&meta);
+	cub3d_draw_human(&meta);
 	cub3d_push_img_loop(&meta);
 	free_meta(&meta);
+	my_mlx_close_win(&(meta.mlx));
 	return (0);
 }
 
-__attribute__((destructor))
-static void destructor()
-{
-	system("leaks -q cub3D");
-}
+// __attribute__((destructor))
+// static void destructor()
+// {
+// 	system("leaks -q cub3D");
+// }

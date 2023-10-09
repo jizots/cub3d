@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_human_vector.c                                :+:      :+:    :+:   */
+/*   draw_human.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 10:49:46 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/04 13:55:14 by hotph            ###   ########.fr       */
+/*   Created: 2023/10/09 16:28:57 by hotph             #+#    #+#             */
+/*   Updated: 2023/10/09 16:29:06 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,11 @@ void	draw_raycast_to_human_vector(t_meta *meta)
 			(t_point2df){wall.x, wall.y}, RAY_COLOR);
 		adding_radian += meta->human.fov / 2;
 	}
+}
+
+void	cub3d_draw_human(t_meta *meta)
+{
+	draw_raycast_to_human_vector(meta);
+	my_mlx_draw_circle(&(meta->mlx),
+		meta->human.point, HUMAN_RADIUS, meta->human.color);
 }
