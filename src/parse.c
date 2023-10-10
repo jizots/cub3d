@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:50:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 16:32:19 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/10 09:31:43 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,11 @@ static int	parse_elements(int fd, t_meta *meta)
 			return (printf("Error. Insufficient element\n"));
 		line_num++;
 		flag += parse_line_element(line, meta, line_num, flag);
-		if (flag < 0)
-		{
-			free(line);
-			break ;
-		}
 		free(line);
+		if (flag < 0)
+			break ;
 	}
-	if (flag != 6)
+	if (flag != 6 || color_duplication_check(meta) != 0)
 		return (1);
 	if (init_texture(meta) != 0)
 		return (1);
@@ -69,10 +66,7 @@ int	cub3d_parse(char *file, t_meta *meta)
 	if (status == 0)
 		status = parse_map(fd, meta);
 	if (status != 0)
-	{
 		free_meta(meta);
-		my_mlx_close_win(&(meta->mlx));
-	}
 	close(fd);
 	return (status);
 }

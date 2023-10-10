@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 16:27:46 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/10 09:55:59 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ int	main(int ac, char *av[])
 		return (printf("Error.\nInvalid argument\n"));
 	if (init_meta(&meta) != 0)
 		return (1);
-	if (cub3d_parse(av[1], &meta) != 0)
-		return (1);
 	if (cub3d_create_win(&meta) != 0)
 		return (1);
+	if (cub3d_parse(av[1], &meta) != 0)
+	{
+		my_mlx_close_win(&(meta.mlx));
+		return (1);
+	}
 	cub3d_draw_map(&meta);
 	cub3d_draw_view(&meta);
 	cub3d_draw_human(&meta);
