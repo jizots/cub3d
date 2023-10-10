@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   parse_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/24 15:29:30 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/10 08:59:33 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+
+int	color_duplication_check(t_meta *meta)
+{
+	if (meta->floor_color == -1 || meta->ceiling_color == -1)
+		return (error_msg_file(FAIL_ELEM, 0));
+	if (WALL_COLOR == meta->floor_color || WALL_COLOR == meta->ceiling_color)
+		return (error_msg_file(FAIL_ELEM, 0));
+	return (0);
+}
 
 static int	copy_path_of_texture(char **split, t_meta *meta)
 {
