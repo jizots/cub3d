@@ -6,50 +6,60 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/10 17:17:51 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/10 21:10:24 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 #include "keycode.h"
 
-void	human_walk2(t_human *human, int keycode)
+void	human_walk2(t_human *human, t_mlx *mlx, int keycode, t_point2df old_pos)
 {
 	if (keycode == KEY_RIGHT)
 	{
 		human->point.y += sin(human->vector + get_radian(90)) * MOVE_SPEED;
+		if (is_wall(human->point, mlx))
+			human->point.y = old_pos.y;
 		human->point.x += cos(human->vector + get_radian(90)) * MOVE_SPEED;
+		if (is_wall(human->point, mlx))
+			human->point.x = old_pos.x;
 	}
 	else if (keycode == KEY_LEFT)
 	{
 		human->point.y += sin(human->vector + get_radian(-90)) * MOVE_SPEED;
+		if (is_wall(human->point, mlx))
+			human->point.y = old_pos.y;
 		human->point.x += cos(human->vector + get_radian(-90)) * MOVE_SPEED;
+		if (is_wall(human->point, mlx))
+			human->point.x = old_pos.x;
 	}
 }
 
 void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 {
 	t_point2df		old_pos;
-	unsigned int	color;
 
 	old_pos = human->point;
 	if (keycode == KEY_DOWN)
 	{
 		human->point.y -= sin(human->vector) * MOVE_SPEED;
+		if (is_wall(human->point, mlx))
+			human->point.y = old_pos.y;
 		human->point.x -= cos(human->vector) * MOVE_SPEED;
+		if (is_wall(human->point, mlx))
+			human->point.x = old_pos.x;
 	}
 	else if (keycode == KEY_UP)
 	{
 		human->point.y += sin(human->vector) * MOVE_SPEED;
+		if (is_wall(human->point, mlx))
+			human->point.y = old_pos.y;
 		human->point.x += cos(human->vector) * MOVE_SPEED;
+		if (is_wall(human->point, mlx))
+			human->point.x = old_pos.x;
 	}
 	else
-		human_walk2(human, keycode);
-	color = *((unsigned int *)(mlx->addr
-				+ ((int)human->point.y * mlx->line_length
-					+ (int)human->point.x * (mlx->bits_per_pixel / 8))));
-	if (color == WALL_COLOR)
-		human->point = old_pos;
+		human_walk2(human, mlx, keycode, old_pos);
 }
 
 void	human_vector_rotate(t_human *human, int keycode)
