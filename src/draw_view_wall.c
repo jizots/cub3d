@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/09 16:28:38 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/10 17:08:24 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ void	draw_texture_on_each_col(
 	zoom_ratio = colli->dis / *base_dis;
 	ignore = (SCREEN_HEIGHT - (SCREEN_HEIGHT / zoom_ratio)) / 2;
 	if (ignore < 0)
+	{
+		ignore = 0;
 		i = 0;
+	}
 	else
 		i = ignore;
 	while (i < SCREEN_HEIGHT - ignore)
