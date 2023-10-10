@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 16:25:53 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/10 17:17:51 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 	else if (keycode == KEY_A || keycode == KEY_D)
 		human_vector_rotate(&(meta->human), keycode);
 	cub3d_draw_view(meta);
-	draw_minimap(meta);
 	cub3d_draw_human(meta);
 	mlx_put_image_to_window(meta->mlx.mlx, meta->mlx.win, meta->mlx.img, 0, 0);
 	return (0);
