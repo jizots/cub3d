@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:52:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/29 10:12:22 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/11 15:29:39 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	my_mlx_create_win(t_mlx *mlx)
 	mlx->win
 		= mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3DDD");
 	if (mlx->win == NULL)
-		return (perror_wrap("Error. at mlx_new_win", 1));
+		return (perror_wrap("at mlx_new_win", 1));
 	return (0);
 }
 
