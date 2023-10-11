@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/11 09:38:53 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/11 10:25:50 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	draw_texture_on_each_col(
 	while (i < SCREEN_HEIGHT - ignore)
 	{
 		if (is_map(colli->col, i, meta) == true)
-			;
+			i++;
 		else
 		{
 			color = cub3d_select_color(
