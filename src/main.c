@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/10 09:55:59 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/11 15:28:53 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	init_meta(t_meta *meta)
 	meta->ceiling_color = -1;
 	meta->mlx.mlx = mlx_init();
 	if (meta->mlx.mlx == NULL)
-		return (perror_wrap("Error. at mlx_int", 1));
+		return (perror_wrap("at mlx_int", 1));
 	meta->human.color = HUMAN_COLOR;
 	meta->human.fov = M_PI / 3;
 	return (0);
