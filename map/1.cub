@@ -1,10 +1,10 @@
-NO ./texture/colorstone.png
-SO ./texture/eagle.png
-WE ./texture/redbrick.png
-EA ./texture/bluestone.png
+NO ./texture/flower.png
+SO ./texture/fish.png
+WE ./texture/sake.png
+EA ./texture/chick.png
 
-F 175,228,180
-C 175,223,228
+F 255,244,220
+C 25,178,255
 
 
         1111111111111111111111111
