@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/10 17:08:24 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/11 09:38:53 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ int	cub3d_select_color(
 				round(meta->north_tex.img_height * row));
 	else if (colli->dire == 'S')
 		color = get_color_from_texture(meta->south_tex,
-				round(meta->south_tex.img_width * colli->tex_x),
+				meta->south_tex.img_width
+				- round(meta->south_tex.img_width * colli->tex_x),
 				round(meta->south_tex.img_height * row));
 	else if (colli->dire == 'W')
 		color = get_color_from_texture(meta->west_tex,
-				round(meta->west_tex.img_width * colli->tex_x),
+				meta->west_tex.img_width
+				- round(meta->west_tex.img_width * colli->tex_x),
 				round(meta->west_tex.img_height * row));
 	else if (colli->dire == 'E')
 		color = get_color_from_texture(meta->east_tex,
@@ -95,9 +97,8 @@ void	draw_texture_on_each_col(
 		{
 			color = cub3d_select_color(
 					meta, colli, (i - ignore) / (SCREEN_HEIGHT / zoom_ratio));
-			my_mlx_pixel_put(&(meta->mlx), colli->col, i, color);
+			my_mlx_pixel_put(&(meta->mlx), colli->col, i++, color);
 		}
-		i++;
 	}
 }
 
