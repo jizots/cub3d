@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/15 15:12:08 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/15 15:27:55 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static t_collision	get_fov_wall_data(t_meta *meta, const int col)
 	init_ray(&verti, &horiz, meta, &adding_radian);
 	wall = get_point2d_wall(&verti, &horiz, meta, verti.vector);
 	colli = convert_collision_data(&(meta->human.point), &wall, &verti);
+	colli.dis *= cos(meta->human.vector - verti.vector);
 	colli.col = col;
 	colli.tex_x = get_tex_x(&wall, colli.dire, meta->tile_size);
 	return (colli);
