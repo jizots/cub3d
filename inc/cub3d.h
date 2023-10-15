@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 16:42:31 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/15 15:16:48 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # define WALL '1'
 # define MAP_WIDTH 500
 # define MAP_HEIGHT 500
-# define HUMAN_RADIUS 5
+# define HUMAN_RADIUS 3
 # define MOVE_SPEED 3
 # define HUMAN_COLOR 0x00FF0000
 # define WALL_COLOR 0x00FFFFFF
@@ -97,7 +97,7 @@ typedef struct s_meta
 	t_tex	east_tex;
 	int		floor_color;
 	int		ceiling_color;
-	double	tile_size;
+	size_t	tile_size;
 	char	**map;
 	t_human	human;
 	size_t	width_map;
@@ -107,7 +107,7 @@ typedef struct s_meta
 
 /*------prototype------*/
 int		cub3d_parse(char *file_name, t_meta *meta);
-int		cub3d_create_win(t_meta *meta);
+int		my_mlx_create_win(t_mlx *mlx);
 void	cub3d_draw_map(t_meta *meta);
 void	cub3d_draw_view(t_meta *meta);
 void	cub3d_draw_human(t_meta *meta);

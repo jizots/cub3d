@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:09:39 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/08 11:02:43 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/15 14:58:22 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ void	next_horizontal_intersec(
 		+ ((horiz->intersec.x - start.x) * tan(vector));
 }
 
-bool	is_wall(t_point2df point, t_mlx *mlx)
+bool	is_wall(t_point2di point, t_mlx *mlx)
 {
 	unsigned int	color;
 
 	if (point.x < 0 || point.x >= SCREEN_WIDTH
 		|| point.y < 0 || point.y >= SCREEN_HEIGHT)
 		return (true);
-	color = *((unsigned int *)(mlx->addr + ((int)point.y * mlx->line_length
-					+ (int)point.x * (mlx->bits_per_pixel / 8))));
+	color = *((unsigned int *)(mlx->addr + (point.y * mlx->line_length
+					+ point.x * (mlx->bits_per_pixel / 8))));
 	if (color == WALL_COLOR)
 		return (true);
 	return (false);
@@ -81,7 +81,7 @@ t_point2df	get_point2d_wall(
 	t_point2df	current;
 
 	current = meta->human.point;
-	while (is_wall(current, &(meta->mlx)) == false)
+	while (is_wall((t_point2di){current.x, current.y}, &(meta->mlx)) == false)
 	{
 		if ((is_up_direction(vector_ray)
 				&& verti->intersec.y > horiz->intersec.y)

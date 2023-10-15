@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/11 16:06:08 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/15 14:54:00 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ void	human_walk2(t_human *human, t_mlx *mlx, int keycode, t_point2df old_pos)
 	if (keycode == KEY_D)
 	{
 		human->point.y += sin(human->vector + get_radian(90)) * MOVE_SPEED;
-		if (is_wall(human->point, mlx))
+		if (is_wall((t_point2di){human->point.x, human->point.y}, mlx))
 			human->point.y = old_pos.y;
 		human->point.x += cos(human->vector + get_radian(90)) * MOVE_SPEED;
-		if (is_wall(human->point, mlx))
+		if (is_wall((t_point2di){human->point.x, human->point.y}, mlx))
 			human->point.x = old_pos.x;
 	}
 	else if (keycode == KEY_A)
 	{
 		human->point.y += sin(human->vector + get_radian(-90)) * MOVE_SPEED;
-		if (is_wall(human->point, mlx))
+		if (is_wall((t_point2di){human->point.x, human->point.y}, mlx))
 			human->point.y = old_pos.y;
 		human->point.x += cos(human->vector + get_radian(-90)) * MOVE_SPEED;
-		if (is_wall(human->point, mlx))
+		if (is_wall((t_point2di){human->point.x, human->point.y}, mlx))
 			human->point.x = old_pos.x;
 	}
 }
@@ -43,19 +43,19 @@ void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 	if (keycode == KEY_S)
 	{
 		human->point.y -= sin(human->vector) * MOVE_SPEED;
-		if (is_wall(human->point, mlx))
+		if (is_wall((t_point2di){human->point.x, human->point.y}, mlx))
 			human->point.y = old_pos.y;
 		human->point.x -= cos(human->vector) * MOVE_SPEED;
-		if (is_wall(human->point, mlx))
+		if (is_wall((t_point2di){human->point.x, human->point.y}, mlx))
 			human->point.x = old_pos.x;
 	}
 	else if (keycode == KEY_W)
 	{
 		human->point.y += sin(human->vector) * MOVE_SPEED;
-		if (is_wall(human->point, mlx))
+		if (is_wall((t_point2di){human->point.x, human->point.y}, mlx))
 			human->point.y = old_pos.y;
 		human->point.x += cos(human->vector) * MOVE_SPEED;
-		if (is_wall(human->point, mlx))
+		if (is_wall((t_point2di){human->point.x, human->point.y}, mlx))
 			human->point.x = old_pos.x;
 	}
 	else
