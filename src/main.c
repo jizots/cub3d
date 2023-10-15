@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:44:10 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/11 15:28:53 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/15 14:57:30 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	main(int ac, char *av[])
 		return (printf("Error.\nInvalid argument\n"));
 	if (init_meta(&meta) != 0)
 		return (1);
-	if (cub3d_create_win(&meta) != 0)
+	if (my_mlx_create_win(&(meta.mlx)) != 0)
+		return (1);
+	if (my_mlx_create_image_addr(&(meta.mlx)) != 0)
 		return (1);
 	if (cub3d_parse(av[1], &meta) != 0)
 	{
