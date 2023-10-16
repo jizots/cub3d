@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/15 15:27:55 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/16 14:28:15 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,15 @@ static t_collision	get_fov_wall_data(t_meta *meta, const int col)
 	return (colli);
 }
 
-int	cub3d_select_color(
-	t_meta *meta, t_collision *colli, double row)
+void	set_i_and_notwall(int *i, int *notwall)
 {
-	int		color;
-
-	if (colli->dire == 'N')
-		color = get_color_from_texture(meta->north_tex,
-				round(meta->north_tex.img_width * colli->tex_x),
-				round(meta->north_tex.img_height * row));
-	else if (colli->dire == 'S')
-		color = get_color_from_texture(meta->south_tex,
-				meta->south_tex.img_width
-				- round(meta->south_tex.img_width * colli->tex_x),
-				round(meta->south_tex.img_height * row));
-	else if (colli->dire == 'W')
-		color = get_color_from_texture(meta->west_tex,
-				meta->west_tex.img_width
-				- round(meta->west_tex.img_width * colli->tex_x),
-				round(meta->west_tex.img_height * row));
-	else if (colli->dire == 'E')
-		color = get_color_from_texture(meta->east_tex,
-				round(meta->east_tex.img_width * colli->tex_x),
-				round(meta->east_tex.img_height * row));
+	if (*notwall < 0)
+	{
+		*notwall = 0;
+		*i = 0;
+	}
 	else
-		color = 0x00FFFFFF;
-	return (color);
+		*i = *notwall;
 }
 
 /*
@@ -79,27 +62,25 @@ void	draw_texture_on_each_col(
 	int		i;
 	int		color;
 	double	zoom_ratio;
-	int		ignore;
+	int		notwall;
+	double	row;
 
 	zoom_ratio = colli->dis / *base_dis;
-	ignore = (SCREEN_HEIGHT - (SCREEN_HEIGHT / zoom_ratio)) / 2;
-	if (ignore < 0)
-	{
-		ignore = 0;
-		i = 0;
-	}
-	else
-		i = ignore;
-	while (i < SCREEN_HEIGHT - ignore)
+	notwall = (SCREEN_HEIGHT - (SCREEN_HEIGHT / zoom_ratio)) / 2;
+	set_i_and_notwall(&i, &notwall);
+	while (i < SCREEN_HEIGHT - notwall)
 	{
 		if (is_map(colli->col, i, meta) == true)
-			i++;
-		else
 		{
-			color = cub3d_select_color(
-					meta, colli, (i - ignore) / (SCREEN_HEIGHT / zoom_ratio));
-			my_mlx_pixel_put(&(meta->mlx), colli->col, i++, color);
+			i++;
+			continue ;
 		}
+		if (zoom_ratio < 1)
+			row = ((i * zoom_ratio) / SCREEN_HEIGHT) + ((1 - zoom_ratio) / 2);
+		else
+			row = (i - notwall) / (SCREEN_HEIGHT / zoom_ratio);
+		color = cub3d_select_color(meta, colli, row);
+		my_mlx_pixel_put(&(meta->mlx), colli->col, i++, color);
 	}
 }
 
