@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:32:12 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/15 15:18:56 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/16 14:29:22 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char		which_direction(const t_ray *verti, const double radian);
 double		get_tex_x(
 				t_point2df *wall, const char dire, const int tile_size);
 int			get_color_from_texture(t_tex tex, int x, int y);
+int			cub3d_select_color(
+				t_meta *meta, t_collision *colli, double row);
 bool		is_map(size_t x, size_t y, t_meta *meta);
 void		draw_raycast_to_human_vector(t_meta *meta);
 
