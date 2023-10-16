@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:10:01 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/16 14:29:40 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/16 15:26:06 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,26 @@ int	cub3d_select_color(
 {
 	int		color;
 
+	if (1.0000 < row)
+		row = 1.0;
 	if (colli->dire == 'N')
 		color = get_color_from_texture(meta->north_tex,
-				round(meta->north_tex.img_width * colli->tex_x),
-				round(meta->north_tex.img_height * row));
+				round((meta->north_tex.img_width - 1) * colli->tex_x),
+				round((meta->north_tex.img_height - 1) * row));
 	else if (colli->dire == 'S')
 		color = get_color_from_texture(meta->south_tex,
-				meta->south_tex.img_width
-				- round(meta->south_tex.img_width * colli->tex_x),
-				round(meta->south_tex.img_height * row));
+				(meta->south_tex.img_width - 1)
+				- round((meta->south_tex.img_width - 1) * colli->tex_x),
+				round((meta->south_tex.img_height - 1) * row));
 	else if (colli->dire == 'W')
 		color = get_color_from_texture(meta->west_tex,
-				meta->west_tex.img_width
-				- round(meta->west_tex.img_width * colli->tex_x),
-				round(meta->west_tex.img_height * row));
+				(meta->west_tex.img_width - 1)
+				- round((meta->west_tex.img_width - 1) * colli->tex_x),
+				round((meta->west_tex.img_height - 1) * row));
 	else if (colli->dire == 'E')
 		color = get_color_from_texture(meta->east_tex,
-				round(meta->east_tex.img_width * colli->tex_x),
-				round(meta->east_tex.img_height * row));
+				round((meta->east_tex.img_width - 1) * colli->tex_x),
+				round((meta->east_tex.img_height - 1) * row));
 	else
 		color = 0x00FFFFFF;
 	return (color);
