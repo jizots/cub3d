@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/15 15:16:48 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/17 11:34:12 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 # include "my_mlx.h"
 
 /*-------difine------*/
-# define SPACE '0'
-# define WALL '1'
+# define SPACE 48
+# define WALL 49
 # define MAP_WIDTH 500
 # define MAP_HEIGHT 500
 # define HUMAN_RADIUS 3

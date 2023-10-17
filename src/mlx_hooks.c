@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/15 14:54:00 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/17 13:35:39 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	human_vector_rotate(t_human *human, int keycode)
 
 int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 {
-	my_mlx_image_clear(&(meta->mlx));
 	draw_sky_and_ground(meta);
 	draw_minimap(meta);
 	if (keycode == KEY_ESC)
