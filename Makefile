@@ -32,7 +32,7 @@ OBJS_DIR = objs/
 
 OBJS = ${addprefix ${OBJS_DIR}, ${SRCS:%.c=%.o}}
 
-LIBSFT_DIR = ../../libsft/libsft #May change it when reorganizing directory the project
+LIBSFT_DIR = ./libsft
 LIBSFT_MAKEFILE = $(LIBSFT_DIR)/Makefile
 LIBSFT_STATIC = $(LIBSFT_DIR)/libsft.a
 
@@ -40,7 +40,7 @@ MLX_DIR = ./minilibx
 MLX_MAKEFILE = $(MLX_DIR)/Makefile
 MLX_STATIC = $(MLX_DIR)/libmlx.a
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
 
 all: ${OBJS_DIR} ${NAME}
 
@@ -58,9 +58,6 @@ $(LIBSFT_STATIC):
 
 $(MLX_STATIC):
 	$(MAKE) -C $(MLX_DIR)
-
-bonus:
-	${MAKE} WITH_BONUS=1 all
 
 clean:
 	$(MAKE) -C $(LIBSFT_DIR) clean

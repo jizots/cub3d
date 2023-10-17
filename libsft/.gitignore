@@ -1,0 +1,10 @@
+*.json
+libsft.code-workspace
+a.out
+.DS_Store
+c_cpp_propeties.json
+.vscode/c_cpp_properties.json
+.vscode/c_cpp_properties.json
+*.o
+libft.a
+libsft.a
