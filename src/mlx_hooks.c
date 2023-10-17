@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/17 13:35:39 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:47:05 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	human_vector_rotate(t_human *human, int keycode)
 
 int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 {
-	draw_sky_and_ground(meta);
 	draw_minimap(meta);
 	if (keycode == KEY_ESC)
 	{
@@ -87,8 +86,5 @@ int	cub3d_mlx_keypush(int keycode, t_meta *meta)
 		human_walk(&(meta->human), &(meta->mlx), keycode);
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		human_vector_rotate(&(meta->human), keycode);
-	cub3d_draw_view(meta);
-	cub3d_draw_human(meta);
-	mlx_put_image_to_window(meta->mlx.mlx, meta->mlx.win, meta->mlx.img, 0, 0);
 	return (0);
 }
