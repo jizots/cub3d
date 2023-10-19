@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/17 14:47:05 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:26:52 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	human_walk(t_human *human, t_mlx *mlx, int keycode)
 void	human_vector_rotate(t_human *human, int keycode)
 {
 	if (keycode == KEY_LEFT)
-		human->vector -= 0.1;
+		human->vector -= 0.07;
 	else if (keycode == KEY_RIGHT)
-		human->vector += 0.1;
+		human->vector += 0.07;
 	if (human->vector < 0)
 		human->vector += 2 * M_PI;
 	else if (human->vector > 2 * M_PI)

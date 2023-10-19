@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_verify.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:06:52 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/30 14:46:24 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/19 14:24:04 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,12 @@ int	verify_map(t_meta *meta)
 	if (status != 0)
 		return (error_msg_file(status, 9999));
 	set_human_vector(meta->map, &(meta->human));
+	meta->width_map = get_best_row_size(meta->map);
+	meta->height_map = count_row_of_matrix(meta->map);
+	if (MAP_WIDTH / 3 < meta->width_map || MAP_HEIGHT / 3 < meta->height_map)
+		return (error_msg_file(MAP_ERROR, 9999));
 	if (is_map_surrounded_by_wall(meta->map, count_row_of_matrix(meta->map), 
 			(int)meta->human.point.x, (int)meta->human.point.y) == false)
 		return (error_msg_file(NO_WALL, 9999));
-	meta->width_map = get_best_row_size(meta->map);
-	meta->height_map = count_row_of_matrix(meta->map);
 	return (0);
 }
