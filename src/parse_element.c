@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/10 08:59:33 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/19 19:47:35 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ int	parse_line_element(char *str, t_meta *meta, size_t line_num, int flag)
 	if (split == NULL)
 		return (perror_wrap("split: ", FAIL_ELEM));
 	status = 0;
-	if (flag < 4)
+	if (ft_memcmp(split[0], "NO", 3) == 0
+		|| ft_memcmp(split[0], "SO", 3) == 0
+		|| ft_memcmp(split[0], "WE", 3) == 0
+		|| ft_memcmp(split[0], "EA", 3) == 0)
 		status = copy_path_of_texture(split, meta);
 	else
 		status = parse_color(split, meta, flag);
