@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_raycast_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:19:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/08 10:56:47 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/19 19:14:06 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,18 @@ void	init_ray(
 	set_radian_within_2pi(&(verti->vector));
 	next_vertical_intersec(start, verti, verti->vector, meta->tile_size);
 	next_horizontal_intersec(start, horiz, horiz->vector, meta->tile_size);
+}
+
+bool	is_wall(t_point2di point, t_mlx *mlx)
+{
+	unsigned int	color;
+
+	if (point.x < 0 || point.x >= SCREEN_WIDTH
+		|| point.y < 0 || point.y >= SCREEN_HEIGHT)
+		return (true);
+	color = *((unsigned int *)(mlx->addr + (point.y * mlx->line_length
+					+ point.x * (mlx->bits_per_pixel / 8))));
+	if (color == WALL_COLOR)
+		return (true);
+	return (false);
 }
