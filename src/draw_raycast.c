@@ -3,29 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   draw_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:09:39 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/15 14:58:22 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/19 19:13:59 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 
+static bool	almost_equal_0_180(
+	t_point2df start, t_ray *change, double vector, int tile_size)
+{
+	if (almost_equal_double(vector, 0.0))
+	{
+		change->intersec = (t_point2df){start.x + tile_size, start.y};
+		return (true);
+	}
+	else if (almost_equal_double(vector, M_PI))
+	{
+		change->intersec = (t_point2df){start.x - tile_size, start.y};
+		return (true);
+	}
+	return (false);
+}
+
+static bool	almost_equal_90_270(
+	t_point2df start, t_ray *change, double vector, int tile_size)
+{
+	if (almost_equal_double(vector, M_PI / 2))
+	{
+		change->intersec = (t_point2df){start.x, start.y + tile_size};
+		return (true);
+	}
+	else if (almost_equal_double(vector, M_PI * 3 / 2))
+	{
+		change->intersec = (t_point2df){start.x, start.y - tile_size};
+		return (true);
+	}
+	return (false);
+}
+
 void	next_vertical_intersec(
 	t_point2df start, t_ray *verti, double vector, int tile_size)
 {
+	if (almost_equal_0_180(start, verti, vector, tile_size))
+		return ;
 	if (verti->flag == 1)
 	{
 		if (is_up_direction(vector))
 			tile_size *= -1;
 		verti->intersec.y = start.y + tile_size;
 		verti->intersec.x = start.x + (tile_size / tan(vector));
-		return ;
-	}
-	if (almost_equal_double(vector, 0.0) || almost_equal_double(vector, M_PI))
-	{
-		verti->intersec = start;
 		return ;
 	}
 	if (is_up_direction(vector))
@@ -39,6 +68,8 @@ void	next_vertical_intersec(
 void	next_horizontal_intersec(
 	t_point2df start, t_ray *horiz, double vector, int tile_size)
 {
+	if (almost_equal_90_270(start, horiz, vector, tile_size))
+		return ;
 	if (horiz->flag == 1)
 	{
 		if (!is_right_direction(vector))
@@ -47,32 +78,12 @@ void	next_horizontal_intersec(
 		horiz->intersec.y = start.y + (tile_size * tan(vector));
 		return ;
 	}
-	if (almost_equal_double(vector, M_PI / 2)
-		|| almost_equal_double(vector, M_PI * 3 / 2))
-	{
-		horiz->intersec = start;
-		return ;
-	}
 	if (is_right_direction(vector))
 		horiz->intersec.x = floor(start.x / tile_size) * tile_size + tile_size;
 	else
 		horiz->intersec.x = floor(start.x / tile_size) * tile_size - 0.0001;
 	horiz->intersec.y = start.y
 		+ ((horiz->intersec.x - start.x) * tan(vector));
-}
-
-bool	is_wall(t_point2di point, t_mlx *mlx)
-{
-	unsigned int	color;
-
-	if (point.x < 0 || point.x >= SCREEN_WIDTH
-		|| point.y < 0 || point.y >= SCREEN_HEIGHT)
-		return (true);
-	color = *((unsigned int *)(mlx->addr + (point.y * mlx->line_length
-					+ point.x * (mlx->bits_per_pixel / 8))));
-	if (color == WALL_COLOR)
-		return (true);
-	return (false);
 }
 
 t_point2df	get_point2d_wall(
