@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:15:08 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/10 09:40:33 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/19 14:22:04 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ one person mark\033[0m in map\n", line);
 inside 0-255\033[0m\n", line);
 	else if (flag == FILENAME_ERROR)
 		printf("Line#%zu: Invalid file name\n", line);
-	if (flag == FAIL_ELEM)
+	else if (flag == FAIL_ELEM)
 		printf("Line#%zu: Invalid element\n", line);
+	else if (flag == MAP_ERROR)
+		printf("Line#%zu:\033[31m MAP is too big\033[0m \
+change within WIDTH: %d, HIGHT: %d\n", line, MAP_WIDTH / 3, MAP_HEIGHT / 3);
 	return (flag);
 }
