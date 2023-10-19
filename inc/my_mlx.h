@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_mlx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:57:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 16:43:39 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/19 15:36:22 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define MY_MLX_H
 
 /*------include-------*/
-# include "../../libsft/libsft/includes/libsft.h"
-# include "../../libsft/libsft/includes/libsft_utils.h"
+# include "../libsft/includes/libsft.h"
+# include "../libsft/includes/libsft_utils.h"
 # include <mlx.h>
 # include <mlx_png.h>
 

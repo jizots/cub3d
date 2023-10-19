@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/17 11:34:12 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:36:38 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 • All functions of the MinilibX
 */
 # include <stdio.h>
-# include "../../libsft/libsft/includes/libsft.h"
-# include "../../libsft/libsft/includes/libsft_utils.h"
+# include "../libsft/includes/libsft.h"
+# include "../libsft/includes/libsft_utils.h"
 # include "error3d.h"
 # include "my_mlx.h"
 
