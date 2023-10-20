@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/19 15:36:38 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/20 13:44:10 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,16 @@ typedef struct s_collision
 	double	tex_x;
 }	t_collision;
 
+typedef struct s_key
+{
+	bool	key_w;
+	bool	key_a;
+	bool	key_s;
+	bool	key_d;
+	bool	key_left;
+	bool	key_right;
+}	t_key;
+
 typedef struct s_meta
 {
 	t_tex	north_tex;
@@ -102,6 +112,7 @@ typedef struct s_meta
 	t_human	human;
 	size_t	width_map;
 	size_t	height_map;
+	t_key	key;
 	t_mlx	mlx;
 }	t_meta;
 
@@ -113,6 +124,9 @@ void	cub3d_draw_view(t_meta *meta);
 void	cub3d_draw_human(t_meta *meta);
 void	cub3d_push_img_loop(t_meta *meta);
 int		cub3d_mlx_keypush(int keycode, t_meta *meta);
+int		cub3d_mlx_keyrelease(int keycode, t_meta *meta);
 void	free_meta(t_meta *meta);
+void	init_human_position(t_meta *meta);
+int		cub3d_loop(t_meta *meta);
 
 #endif

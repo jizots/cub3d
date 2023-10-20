@@ -3,12 +3,13 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -I./inc
 CFLAGS += -I./minilibx
-# CFLAGS += -g -fsanitize=address
+# CFLAGS += -g
+# CFLAGS += -fsanitize=address
 COPTIONS = -L/usr/local/lib -framework OpenGL -framework AppKit -L/usr/lib -lz
 
 SRCS = main.c\
 	parse.c\
-	mlx_hub.c\
+	mlx_cub_hub.c\
 	parse_element.c\
 	parse_map_verify.c\
 	draw_map.c\
@@ -23,7 +24,9 @@ SRCS = main.c\
 	mlx_draw2.c\
 	mlx_draw_bresenham.c\
 	draw_raycast_utils.c\
-	mlx_hooks.c\
+	mlx_cub_hooks.c\
+	mlx_cub_init_loop.c\
+	mlx_key_status.c\
 	free.c\
 	error_msg.c\
 
