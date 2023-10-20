@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:15:08 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/19 14:22:04 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:49:02 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,19 @@ int	error_msg_file(int flag, size_t line)
 {
 	printf("Error\n");
 	if (flag == PERSON_ERROR)
-		printf("Line#%zu: Set\033[31m only or at-least \
-one person mark\033[0m in map\n", line);
+		printf("Set\033[31m only or at-least one person mark\033[0m in map\n");
 	else if (flag == UNDEFINED_C)
-		printf ("Line#%zu: You can\033[31m use only \
-[0][1][N][S][W][E]\033[0m\n", line);
+		printf ("You can\033[31m use only [0][1][N][S][W][E]\033[0m\n");
 	else if (flag == NO_WALL)
-		printf ("Line#%zu:\033[31m Map dose not surround by wall\033[0m\n", line);
+		printf ("\033[31m Map dose not surround by wall\033[0m\n");
 	else if (flag == UNEXPETC_COLORCODE)
-		printf ("Line#%zu:\033[31m COLOR CODE must set \
-inside 0-255\033[0m\n", line);
+		printf ("\033[31m COLOR CODE must set inside 0-255\033[0m\n");
 	else if (flag == FILENAME_ERROR)
-		printf("Line#%zu: Invalid file name\n", line);
+		printf("Invalid file name\n");
 	else if (flag == FAIL_ELEM)
 		printf("Line#%zu: Invalid element\n", line);
 	else if (flag == MAP_ERROR)
-		printf("Line#%zu:\033[31m MAP is too big\033[0m \
-change within WIDTH: %d, HIGHT: %d\n", line, MAP_WIDTH / 3, MAP_HEIGHT / 3);
+		printf("\033[31m MAP is too big\033[0m \
+change within WIDTH: %d, HIGHT: %d\n", MAP_WIDTH / 3, MAP_HEIGHT / 3);
 	return (flag);
 }
