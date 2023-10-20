@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:57:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/20 11:16:55 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/20 13:43:50 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,6 @@ void	my_mlx_draw_bresenham_line(
 void	my_mlx_draw_square(
 			t_mlx *mlx, t_point2df top_left, int size, int color);
 
-bool	is_key_W_pressed(unsigned char press);
-bool	is_key_A_pressed(unsigned char press);
-bool	is_key_S_pressed(unsigned char press);
-bool	is_key_D_pressed(unsigned char press);
+bool	is_key_any_pressed(unsigned char press, bool *key);
 
 #endif
