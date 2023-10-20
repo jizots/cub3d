@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_cub_init_loop.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 13:40:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/20 13:48:43 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/20 19:16:01 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	init_human_position(t_meta *meta)
 	else
 	{
 		if (meta->key.key_left == true)
-			meta->human.vector -= 0.02;
+			meta->human.vector -= 0.03;
 		else if (meta->key.key_right == true)
-			meta->human.vector += 0.02;
+			meta->human.vector += 0.03;
 		if (meta->human.vector < 0)
 			meta->human.vector += 2 * M_PI;
 		else if (meta->human.vector > 2 * M_PI)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 17:28:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/17 11:33:58 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:42:00 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ open, close, read
 
 /*-------difine------*/
 # define IGNORE_LINE 0
-# define VISITED 118
 
 /*------typedef------*/
 

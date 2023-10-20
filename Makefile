@@ -13,8 +13,8 @@ SRCS = main.c\
 	parse_element.c\
 	parse_map_verify.c\
 	draw_map.c\
-	draw_raycast.c\
-	draw_view_wall.c\
+	raycast.c\
+	draw_view.c\
 	draw_view_utils.c\
 	draw_human.c\
 	parse_utils.c\
@@ -23,7 +23,7 @@ SRCS = main.c\
 	mlx_draw1.c\
 	mlx_draw2.c\
 	mlx_draw_bresenham.c\
-	draw_raycast_utils.c\
+	raycast_utils.c\
 	mlx_cub_hooks.c\
 	mlx_cub_init_loop.c\
 	mlx_key_status.c\

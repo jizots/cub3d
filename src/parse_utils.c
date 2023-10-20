@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:14:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 16:20:55 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/20 19:22:27 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ int	get_best_row_size(char **map)
 	while (map[i] != NULL)
 	{
 		tmp = ft_strlen(map[i]);
+		if (map[i][tmp - 1] == '\n')
+		{
+			map[i][tmp - 1] = '\0';
+			tmp--;
+		}
 		if (max < tmp)
 			max = tmp;
 		i++;
