@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:32:53 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/09 16:11:59 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/20 19:23:08 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,6 @@ static void	init_map(t_meta *meta)
 		+ meta->tile_size / 2;
 }
 
-void	draw_sky_and_ground(t_meta *meta)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	while (i < SCREEN_HEIGHT)
-	{
-		j = 0;
-		while (j < SCREEN_WIDTH)
-		{
-			if (i < SCREEN_HEIGHT / 2)
-				my_mlx_pixel_put(&(meta->mlx), j, i, meta->ceiling_color);
-			else
-				my_mlx_pixel_put(&(meta->mlx), j, i, meta->floor_color);
-			j++;
-		}
-		i++;
-	}
-}
-
 void	draw_minimap(t_meta *meta)
 {
 	int		i;
@@ -56,12 +35,13 @@ void	draw_minimap(t_meta *meta)
 		j = 0;
 		while (meta->map[i][j] != '\0')
 		{
-			if (meta->map[i][j] == '1')
-			{
+			if (meta->map[i][j] == WALL)
 				my_mlx_draw_square(&(meta->mlx),
-					(t_point2df){j, i},
-					meta->tile_size, WALL_COLOR);
-			}
+					(t_point2df){j, i}, meta->tile_size, WALL_COLOR);
+			else if (meta->map[i][j] == VISITED
+				|| ft_strchr("0NWSE ", meta->map[i][j]))
+				my_mlx_draw_square(&(meta->mlx),
+					(t_point2df){j, i}, meta->tile_size, MAP_COLOR);
 			j++;
 		}
 		i++;
@@ -71,6 +51,5 @@ void	draw_minimap(t_meta *meta)
 void	cub3d_draw_map(t_meta *meta)
 {
 	init_map(meta);
-	draw_sky_and_ground(meta);
 	draw_minimap(meta);
 }

@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:10:01 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/16 15:26:06 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/20 19:35:28 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 bool	is_map(size_t x, size_t y, t_meta *meta)
 {
-	if (x < (meta->tile_size * meta->width_map)
+	size_t	xi;
+	size_t	yi;
+
+	xi = x / meta->tile_size;
+	yi = y / meta->tile_size;
+	if (yi < meta->height_map && xi < ft_strlen(meta->map[yi])
+		&& x < (meta->tile_size * ft_strlen(meta->map[yi]))
 		&& y < (meta->tile_size * meta->height_map))
 		return (true);
 	return (false);
@@ -68,4 +74,13 @@ int	cub3d_select_color(
 	else
 		color = 0x00FFFFFF;
 	return (color);
+}
+
+void	convert_collision_data(t_meta *meta, t_collision *colli,
+	t_point2df *wall, const t_ray *verti)
+{
+	colli->dis = distance_of_point(meta->human.point, *wall);
+	colli->dire = which_direction(verti, verti->vector);
+	colli->dis *= cos(meta->human.vector - verti->vector);
+	colli->tex_x = get_tex_x(wall, colli->dire, meta->tile_size);
 }

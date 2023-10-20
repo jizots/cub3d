@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_cub_hooks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:45:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/20 13:45:46 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:54:23 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	cub3d_mlx_keyrelease(int keycode, t_meta *meta)
 
 int	cub3d_loop(t_meta *meta)
 {
-	draw_sky_and_ground(meta);
 	draw_minimap(meta);
 	init_human_position(meta);
 	cub3d_draw_view(meta);

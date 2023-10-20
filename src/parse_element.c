@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/19 19:47:35 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/20 19:20:06 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	color_duplication_check(t_meta *meta)
 {
 	if (meta->floor_color == -1 || meta->ceiling_color == -1)
 		return (error_msg_file(FAIL_ELEM, 0));
-	if (WALL_COLOR == meta->floor_color || WALL_COLOR == meta->ceiling_color)
+	if (WALL_COLOR == meta->floor_color
+		|| WALL_COLOR == meta->ceiling_color
+		|| WALL_COLOR == MAP_COLOR)
 		return (error_msg_file(FAIL_ELEM, 0));
 	return (0);
 }
