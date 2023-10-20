@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 13:51:49 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/09/17 18:44:39 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:58:50 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@
 # define KEY_UP		126
 # define KEY_CTRL	256
 # define KEY_CMD	259
+# define KEY_PRESS	2
+# define KEY_RELEASE	3
 
 #endif

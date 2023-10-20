@@ -24,6 +24,7 @@ SRCS = main.c\
 	mlx_draw_bresenham.c\
 	draw_raycast_utils.c\
 	mlx_hooks.c\
+	mlx_key_status.c\
 	free.c\
 	error_msg.c\
 

@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/19 15:36:38 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:15:44 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	cub3d_draw_view(t_meta *meta);
 void	cub3d_draw_human(t_meta *meta);
 void	cub3d_push_img_loop(t_meta *meta);
 int		cub3d_mlx_keypush(int keycode, t_meta *meta);
+int		cub3d_mlx_keyrelease(int keycode, t_meta *meta);
 void	free_meta(t_meta *meta);
 
 #endif
