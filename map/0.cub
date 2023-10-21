@@ -1,7 +1,7 @@
-NO ./texture/flower.png
-SO ./texture/fish.png
-WE ./texture/sake.png
-EA ./texture/chick.png
+NO ./texture/flower.xpm
+SO ./texture/fish.xpm
+WE ./texture/sake.xpm
+EA ./texture/chick.xpm
 
 F 255,244,220
 C 25,178,255

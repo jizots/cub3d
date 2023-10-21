@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:50:06 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/11 15:29:32 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/21 12:47:03 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ int	my_mlx_png_file(t_mlx *mlx, t_tex *tex)
 			&(tex->img_width), &(tex->img_height));
 	if (tex->img == NULL)
 		return (perror_wrap("at mlx_png_file_to_image", 1));
+	tex->addr = mlx_get_data_addr(tex->img, &(tex->bpp),
+			&(tex->line_length), &(tex->endian));
+	if (tex->addr == NULL)
+		return (perror_wrap("at mlx_get_data_addr", 1));
+	return (0);
+}
+
+int	my_mlx_xpm_file(t_mlx *mlx, t_tex *tex)
+{
+	tex->img = mlx_xpm_file_to_image(mlx->mlx, tex->filepath,
+			&(tex->img_width), &(tex->img_height));
+	if (tex->img == NULL)
+		return (perror_wrap("at mlx_xpm_file_to_image", 1));
 	tex->addr = mlx_get_data_addr(tex->img, &(tex->bpp),
 			&(tex->line_length), &(tex->endian));
 	if (tex->addr == NULL)

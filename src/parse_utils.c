@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:14:42 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/20 19:22:27 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/21 12:47:21 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ int	try_open_path(char *path)
 
 int	init_texture(t_meta *meta)
 {
-	if (my_mlx_png_file(&(meta->mlx), &(meta->north_tex)) != 0)
+	if (my_mlx_xpm_file(&(meta->mlx), &(meta->north_tex)) != 0)
 		return (1);
-	if (my_mlx_png_file(&(meta->mlx), &(meta->south_tex)) != 0)
+	if (my_mlx_xpm_file(&(meta->mlx), &(meta->south_tex)) != 0)
 		return (1);
-	if (my_mlx_png_file(&(meta->mlx), &(meta->west_tex)) != 0)
+	if (my_mlx_xpm_file(&(meta->mlx), &(meta->west_tex)) != 0)
 		return (1);
-	if (my_mlx_png_file(&(meta->mlx), &(meta->east_tex)) != 0)
+	if (my_mlx_xpm_file(&(meta->mlx), &(meta->east_tex)) != 0)
 		return (1);
 	return (0);
 }
