@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_cub_init_loop.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 13:40:33 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/20 19:16:01 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/21 12:50:55 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,19 @@ void	human_walk_right(t_human *human, t_mlx *mlx, double speed)
 void	init_human_position(t_meta *meta)
 {
 	if (meta->key.key_w == true)
-		human_walk_up(&(meta->human), &(meta->mlx), meta->tile_size / 6.0);
+		human_walk_up(&(meta->human), &(meta->mlx), meta->tile_size / 4.0);
 	else if (meta->key.key_a == true)
-		human_walk_left(&(meta->human), &(meta->mlx), meta->tile_size / 6.0);
+		human_walk_left(&(meta->human), &(meta->mlx), meta->tile_size / 4.0);
 	else if (meta->key.key_s == true)
-		human_walk_down(&(meta->human), &(meta->mlx), meta->tile_size / 6.0);
+		human_walk_down(&(meta->human), &(meta->mlx), meta->tile_size / 4.0);
 	else if (meta->key.key_d == true)
-		human_walk_right(&(meta->human), &(meta->mlx), meta->tile_size / 6.0);
+		human_walk_right(&(meta->human), &(meta->mlx), meta->tile_size / 4.0);
 	else
 	{
 		if (meta->key.key_left == true)
-			meta->human.vector -= 0.03;
+			meta->human.vector -= 0.05;
 		else if (meta->key.key_right == true)
-			meta->human.vector += 0.03;
+			meta->human.vector += 0.05;
 		if (meta->human.vector < 0)
 			meta->human.vector += 2 * M_PI;
 		else if (meta->human.vector > 2 * M_PI)

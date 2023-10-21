@@ -6,7 +6,7 @@
 /*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:57:27 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/20 13:43:50 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:46:21 by sotanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int		my_mlx_create_win(t_mlx *mlx);
 int		my_mlx_create_image_addr(t_mlx *mlx);
 void	my_mlx_image_clear(t_mlx *mlx);
 int		my_mlx_png_file(t_mlx *mlx, t_tex *tex);
+int		my_mlx_xpm_file(t_mlx *mlx, t_tex *tex);
 int		my_mlx_close_win(t_mlx *mlx);
 void	my_mlx_draw_circle(
 			t_mlx *mlx, t_point2df center, int radius, int color);
