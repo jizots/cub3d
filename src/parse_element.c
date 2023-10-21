@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:45:32 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/19 19:47:35 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/21 10:28:48 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static int	get_rgb(int *rgb, char **split, int flag)
 	while (status != FAIL_ELEM && i < 3)
 	{
 		rgb[i] = ft_atoi(rgb_char[i]);
-		if (rgb[i] < 0 || 255 < rgb[i])
+		if (rgb[i] < 0 || 255 < rgb[i]
+			|| !is_string_composedof(rgb_char[i], "0123456789"))
 		{
 			status = error_msg_file(UNEXPETC_COLORCODE, flag);
 			break ;
