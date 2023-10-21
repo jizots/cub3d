@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_view_wall.c                                   :+:      :+:    :+:   */
+/*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:40:25 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/16 14:28:15 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/20 19:35:07 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
-
-static t_collision	convert_collision_data(
-	const t_point2df *start, const t_point2df *wall,
-	const t_ray *verti)
-{
-	t_collision	colli;
-
-	colli.dis = distance_of_point(*start, *wall);
-	colli.dire = which_direction(verti, verti->vector);
-	return (colli);
-}
 
 static t_collision	get_fov_wall_data(t_meta *meta, const int col)
 {
@@ -34,22 +23,41 @@ static t_collision	get_fov_wall_data(t_meta *meta, const int col)
 	adding_radian = (meta->human.fov / SCREEN_WIDTH) * col;
 	init_ray(&verti, &horiz, meta, &adding_radian);
 	wall = get_point2d_wall(&verti, &horiz, meta, verti.vector);
-	colli = convert_collision_data(&(meta->human.point), &wall, &verti);
-	colli.dis *= cos(meta->human.vector - verti.vector);
+	convert_collision_data(meta, &colli, &wall, &verti);
 	colli.col = col;
-	colli.tex_x = get_tex_x(&wall, colli.dire, meta->tile_size);
 	return (colli);
 }
 
-void	set_i_and_notwall(int *i, int *notwall)
+static void	draw_ceil(t_meta *meta, int col, int *i, int *notwall)
 {
+	int	row;
+
 	if (*notwall < 0)
 	{
 		*notwall = 0;
 		*i = 0;
 	}
 	else
+	{
 		*i = *notwall;
+		row = 0;
+		while (row < *notwall)
+		{
+			if (is_map(col, row, meta) == false)
+				my_mlx_pixel_put(&(meta->mlx), col, row, meta->ceiling_color);
+			row++;
+		}
+	}
+}
+
+static void	draw_floor(t_meta *meta, int col, int row)
+{
+	while (row < SCREEN_HEIGHT)
+	{
+		if (is_map(col, row, meta) == false)
+			my_mlx_pixel_put(&(meta->mlx), col, row, meta->floor_color);
+		row++;
+	}
 }
 
 /*
@@ -67,7 +75,7 @@ void	draw_texture_on_each_col(
 
 	zoom_ratio = colli->dis / *base_dis;
 	notwall = (SCREEN_HEIGHT - (SCREEN_HEIGHT / zoom_ratio)) / 2;
-	set_i_and_notwall(&i, &notwall);
+	draw_ceil(meta, colli->col, &i, &notwall);
 	while (i < SCREEN_HEIGHT - notwall)
 	{
 		if (is_map(colli->col, i, meta) == true)
@@ -82,6 +90,7 @@ void	draw_texture_on_each_col(
 		color = cub3d_select_color(meta, colli, row);
 		my_mlx_pixel_put(&(meta->mlx), colli->col, i++, color);
 	}
+	draw_floor(meta, colli->col, i);
 }
 
 /*

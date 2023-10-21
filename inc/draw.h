@@ -6,7 +6,7 @@
 /*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:32:12 by hotph             #+#    #+#             */
-/*   Updated: 2023/10/16 14:29:22 by hotph            ###   ########.fr       */
+/*   Updated: 2023/10/20 19:38:12 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ bool		is_wall(t_point2di point, t_mlx *mlx);
 t_point2df	get_point2d_wall(
 				t_ray *verti, t_ray *horiz, t_meta *meta, double vector_ray);
 char		which_direction(const t_ray *verti, const double radian);
+void		convert_collision_data(t_meta *meta, t_collision *colli,
+				t_point2df *wall, const t_ray *verti);
 double		get_tex_x(
 				t_point2df *wall, const char dire, const int tile_size);
 int			get_color_from_texture(t_tex tex, int x, int y);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sotanaka <sotanaka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hotph <hotph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 18:30:22 by sotanaka          #+#    #+#             */
-/*   Updated: 2023/10/20 13:44:10 by sotanaka         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:42:08 by hotph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ open, close, read, write, printf, malloc, free, perror, strerror, exit
 /*-------difine------*/
 # define SPACE 48
 # define WALL 49
+# define VISITED 118
 # define MAP_WIDTH 500
 # define MAP_HEIGHT 500
 # define HUMAN_RADIUS 3
 # define MOVE_SPEED 3
 # define HUMAN_COLOR 0x00FF0000
 # define WALL_COLOR 0x00FFFFFF
+# define MAP_COLOR 0x7d7d7d
 # define RAY_COLOR 0xF58220
 
 /*
