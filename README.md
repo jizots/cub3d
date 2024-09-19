@@ -3,7 +3,8 @@
 これによって画像をどのように拡大縮小するか、効率的な障害物（壁）の位置の把握方法を学ぶことができます。  
 
 # Example
-https://github.com/user-attachments/assets/f1ee178a-57df-46df-affb-85c4d70a95b0  
+![Untitled](https://github.com/user-attachments/assets/137971a5-dbfc-4873-a754-f9226e3e2dd6)
+  
 プログラムを起動すると、3D空間の散策ができます。  
 
 # 機能
